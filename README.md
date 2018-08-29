@@ -1,5 +1,6 @@
-![Angular Logo](Angular.png)
-This document will provide a brief overview of the project members that are involved in creating the web 
+![Angular Logo](Angular.png =200x)
+<br>
+This document will provide a brief overview of the project members that are involved in creating the angular web application plus a brief description about the application itself.
 
 ## Project members
 
