@@ -1,7 +1,6 @@
 <div>
 	<img src="Angular.png" width="200px">
 </div>
-This document will provide a brief overview of the project members that are involved in creating the angular web application plus a brief description about the application itself.
 
 ## Project members
 
@@ -13,7 +12,7 @@ Bas Joosten | 3464555
 
 ## Project description
 
-This project will 
+For this project the group members will design and create a web application by making use of the Angular framework (front end technology only). The project will concern a smart task managing/to do application for a company. The company has the optionality to add, edit and remove tasks, departments, and employees individually as well as assigning and removing tasks to and from individual employees as well as departments. 
 
 ## Live website
 
