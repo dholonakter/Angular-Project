@@ -1,5 +1,6 @@
-![Angular Logo](Angular.png){:height="200px"}
-<br>
+<div>
+	<img src="Angular.png" width="200px">
+</div>
 This document will provide a brief overview of the project members that are involved in creating the angular web application plus a brief description about the application itself.
 
 ## Project members
