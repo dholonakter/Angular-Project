@@ -1,4 +1,4 @@
-![Angular Logo](Angular.png =200x)
+![Angular Logo](Angular.png){:height="200px"}
 <br>
 This document will provide a brief overview of the project members that are involved in creating the angular web application plus a brief description about the application itself.
 
