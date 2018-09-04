@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TasksComponent } from './tasks/tasks.component';
-import { Task } from './task';
+import { Task } from './model/task';
+
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Task } from './task';
 })
 export class AppComponent {
   title = 'Web-2 Task Managing App.';
-
+  
   allTasks = [
     new Task('Shopping', 'Bring milk', 'Mother'),
     new Task('web-2', 'Implement tasks', 'Teacher'),
@@ -18,4 +19,5 @@ export class AppComponent {
     new Task('tinkering', 'help me make a star out of paper', 'Sister')
   ];
   myTask = this.allTasks[0];
+
 }
