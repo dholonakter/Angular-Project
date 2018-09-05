@@ -1,0 +1,7 @@
+your tasks:
+<ul>
+    <li *ngFor="let task1 of allTasks">
+      {{ task1.title }}, DESC: {{task1.description}}, GIVEN BY: {{task1.author}}
+    </li>
+</ul>
+<p>Your favorite task is {{ myFavoriteTask.title }} given by {{ myFavoriteTask.author }}</p>

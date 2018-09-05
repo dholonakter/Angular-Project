@@ -3,14 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
+import { TasksComponent } from './tasks/tasks.component';
+
+import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { DepartmentComponent } from './department/department.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    TasksComponent,
+    DepartmentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
