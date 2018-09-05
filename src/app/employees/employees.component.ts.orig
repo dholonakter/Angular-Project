@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD:src/app/employees/employees.component.ts
+import { EMPLOYEES } from '../mock-employees'
+=======
 import { EMPLOYEES } from '../mock-employees';
+>>>>>>> employees:App/src/app/employees/employees.component.ts
 
 @Component({
   selector: 'app-employees',

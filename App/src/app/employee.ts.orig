@@ -1,14 +1,28 @@
 export class Employee {
+<<<<<<< HEAD
+    // Properties
+    static id: number = 0;
+    
+    employeeId: number;
+    firstName: string; 
+=======
     static id: number = 0;
 
     employeeId: number;
     firstName: string;
+>>>>>>> employees
     lastName: string;
     phone: string;
     email: string;
 
+<<<<<<< HEAD
+    // Constructor
+    constructor(firstName: string, lastName: string, phone: string, email: string) {
+        
+=======
     constructor(firstName: string, lastName: string, phone: string, email: string) {
         // Assign a unique id to the employee.
+>>>>>>> employees
         this.employeeId = ++Employee.id;
 
         this.firstName = firstName;
