@@ -1,3 +1,12 @@
-<p>
-  Test.
-</p>
+<div>
+  <h2>
+    Enlisted Employees:
+  </h2>
+</div>
+<div>
+  <ul>
+    <li *ngFor="let employee of employees">
+      ID: {{ employee.employeeId }}, {{ employee.firstName }} {{ employee.lastName }}, phone: {{ employee.phone }}, e-mail: {{ employee.email }}
+    </li>
+  </ul>
+</div>
