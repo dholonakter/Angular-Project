@@ -1,0 +1,15 @@
+.otherInput {
+    margin-bottom: 5px;
+}
+
+.selected {
+    background: cyan;
+}
+
+input {
+    margin-left: 5px;
+}
+
+label {
+    width: 150px;
+}

@@ -5,8 +5,43 @@
 </div>
 <div>
   <ul>
-    <li *ngFor="let employee of employees">
-      {{ employee.displayInformation() }}
+    <li *ngFor="let employee of employees" 
+        [class.selected]="employee === selectedEmployee"
+        (click)="onSelect(employee)">
+      {{ employee.displayBasicInformation() }}
     </li>
   </ul>
+  
+  <div *ngIf="selectedEmployee">
+      {{ selectedEmployee.displayDetailedInformation() }}
+  </div>
+  <br>
+
+  <div id="employeeCRUD">
+    
+    <div class="otherInput">
+      <label for="fName">First Name:</label>
+      <input *ngIf="selectedEmployee; else freshInput" [value]="selectedEmployee.firstName" id="fName" placeholder="first name">
+    </div>
+
+    <ng-template #freshInput>
+        <input id="fName" placeholder="first name">
+    </ng-template>
+    
+    <div class="otherInput">
+      <label for="lName">Last Name:</label>
+      <input id="lName" placeholder="last name">
+    </div>
+
+    <div class="otherInput">
+      <label for="phone">Phone:</label>
+      <input id="phone" placeholder="06-12345678">
+    </div>
+
+    <div class="otherInput">
+      <label for="email">E-mail:</label>
+      <input id="email" placeholder="example@company.info">
+    </div>
+  </div>
 </div>
+<br>

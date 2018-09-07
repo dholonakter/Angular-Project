@@ -19,8 +19,13 @@ export class Employee
         this.email = email;
     }
 
-    displayInformation() 
+    displayBasicInformation()
     {
-        return `ID: ${ this.employeeId }, ${ this.firstName } ${ this.lastName }, phone: ${ this.phone }, e-mail: ${ this.email }`;
+        return `ID: ${ this.employeeId }, ${ this.firstName } ${ this.lastName }`;
+    }
+
+    displayDetailedInformation()
+    {
+        return `${ this.displayBasicInformation() }, phone: ${ this.phone }, e-mail: ${ this.email }`;
     }
 }
