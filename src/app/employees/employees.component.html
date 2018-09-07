@@ -6,7 +6,7 @@
 <div>
   <ul>
     <li *ngFor="let employee of employees">
-      ID: {{ employee.employeeId }}, {{ employee.firstName }} {{ employee.lastName }}, phone: {{ employee.phone }}, e-mail: {{ employee.email }}
+      {{ employee.displayInformation() }}
     </li>
   </ul>
 </div>
