@@ -1,7 +1,22 @@
 your tasks:
 <ul>
-    <li *ngFor="let task1 of allTasks">
+    <li *ngFor="let task1 of allTasks" (click)="onSelect(task1)" [class.selected]="task1 === selectedTask">
       {{ task1.title }}, DESC: {{task1.description}}, GIVEN BY: {{task1.author}}
     </li>
 </ul>
-<p>Your favorite task is {{ myFavoriteTask.title }} given by {{ myFavoriteTask.author }}</p>
+<p *ngIf="selectedTask">Your selected task is {{ this.selectedTask.title }} given by {{ this.selectedTask.author }}</p>
+
+<div *ngIf="selectedTask">
+<label>Title </label>
+<input [(ngModel)]="this.selectedTask.title" placeholder="title"><br>
+<label>Desc </label>
+<input [(ngModel)]="this.selectedTask.description" placeholder="desc"><br>
+<label>Given By </label>
+<input [(ngModel)]="this.selectedTask.author" placeholder="given by">
+</div>
+<div>
+  <button (click)="newTaskClick()">New Task</button>
+  <button *ngIf="selectedTask" (click)="saveClick()">Save</button>
+  <button *ngIf="selectedTask" (click)="cancelClick()">Cancel</button>
+  <button *ngIf="selectedTask" (click)="deleteClick()">Delete</button>
+</div>
