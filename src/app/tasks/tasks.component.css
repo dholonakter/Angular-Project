@@ -1,3 +1,18 @@
 .selected{
-    background-color: cyan;
+    background-color: rgb(228, 228, 228);
+}
+.content-box1{
+    display: block;
+    border: 3px red solid;
+    border-radius: 5%;
+    width: 21%;
+    float: left;
+    margin-right: 2%;
+    margin-bottom: 1%;
+    padding-left: 1%;
+    cursor: pointer;
+}
+
+.rs{
+   clear: both;
 }
