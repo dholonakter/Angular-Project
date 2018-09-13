@@ -2,8 +2,33 @@
     margin-bottom: 5px;
 }
 
-.selected {
-    background: cyan;
+.selected{
+    background-color: rgb(228, 228, 228);
+}
+.content-box1{
+    display: block;
+    border: 3px red solid;
+    width: 200px;
+    border-radius: 5%;
+    margin-bottom: 5px;
+    padding-left: 1%;
+    cursor: pointer;
+}
+
+#selectedEmployeeDisplay {
+    margin-left: 20px;
+}
+
+#employeeCRUD {
+    margin-left: 20px;
+}
+
+button {
+    margin-right: 5px;
+}
+
+h3 {
+    margin-bottom: 0px;
 }
 
 input {

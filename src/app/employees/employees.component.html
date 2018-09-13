@@ -5,15 +5,16 @@
 </div>
 <div>
   <ul>
-    <li *ngFor="let employee of employees" 
+    <li class="content-box1" *ngFor="let employee of employees" 
         [class.selected]="employee === selectedEmployee"
         (click)="onSelect(employee)">
       {{ employee.displayBasicInformation() }}
     </li>
   </ul>
   
-  <div *ngIf="selectedEmployee">
-      {{ selectedEmployee.displayDetailedInformation() }}
+  <div id="selectedEmployeeDisplay" *ngIf="selectedEmployee">
+    <h3>Details of {{ selectedEmployee.firstName }}:</h3>
+    {{ selectedEmployee.displayDetailedInformation() }}
   </div>
   <br>
 
