@@ -1,5 +1,12 @@
 export class Department {
-    constructor(
-        public name:string){}
-    
+  static id:number=0;
+  departmentname:string;
+  departmentid:number;
+  
+  constructor(name:string)
+  {
+    this.departmentid=++Department.id;
+    this.departmentname=name;
+  }
+  
 }

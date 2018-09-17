@@ -8,21 +8,52 @@ import { Department } from '../model/department';
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
+  /*here is list of departments*/
+  departments:Department[]=[
+    new Department('Administration'),
+  new Department('Finance'),
+  new Department('Marketing'),
+  new Department('IT')
+];
   
-  departments=[];
+   selectedDepartment:Department;//Memebers
+   change:boolean=false;
 
-  constructor() {
+    /*here is below method */
 
-    this.departments=
-    [
-      new Department('Administration'),
-      new Department('Finance'),
-      new Department('Marketing'),
-      new Department('IT')
-    ];
+    OnSelect(department:Department):void
+    {
+      this.selectedDepartment=department;    
+    }
+    
+    AddDepartment()
+    {
+       let temp:Department=new Department("DepartmentName");
+       this.departments.push(temp);
+       this.selectedDepartment=temp;
+    }
+    //Update departement
+    UpdateDepartment()
+    {
+
+    }
+   //REMove the selected object from the list
+    DeleteDepartment()
+    {
+
+    }
+    
+
+
+  constructor() 
+  {
+
   }
+  
 
-  ngOnInit() {
+  ngOnInit() 
+  {
+
   }
 
 }
