@@ -35,12 +35,15 @@ export class DepartmentComponent implements OnInit {
     //Update departement
     UpdateDepartment()
     {
-
+        this.selectedDepartment.Ischange=false;
     }
-   //REMove the selected object from the list
+   //Remove the selected object from the list
     DeleteDepartment()
     {
-
+      let indexofdepartment=this.departments.indexOf(this.selectedDepartment);
+      if(indexofdepartment>=0){
+       this.departments.splice(indexofdepartment,1);
+      }
     }
     
 
