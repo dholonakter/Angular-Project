@@ -28,7 +28,7 @@ export class DepartmentComponent implements OnInit {
     
     AddDepartment()
     {
-       let temp:Department=new Department("DepartmentName");
+       let temp:Department=new Department("");
        this.departments.push(temp);
        this.selectedDepartment=temp;
     }
