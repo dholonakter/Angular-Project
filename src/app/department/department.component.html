@@ -1,5 +1,5 @@
 
-<h2>Here below the list of departments</h2>
+<h2>Departments lists</h2>
 <p>Name of the departments:</p>
 <ul class="departments">
     <li *ngFor="let department of departments"
@@ -20,9 +20,12 @@
       </label>
     </div>
     <div>
-      <button (click)="AddDepartment()">AddDepartment</button>
     </div>
-    
-
 </div>
+
+    <button class="btn" (click)="AddDepartment()">AddDepartment</button>
+   <button class="btn" (click)="UpdateDepartment()">Change</button>
+    <button class="btn" (click)="DeleteDepartment()">delete</button>
+
+
 

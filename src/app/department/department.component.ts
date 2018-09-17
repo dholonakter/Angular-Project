@@ -16,8 +16,7 @@ export class DepartmentComponent implements OnInit {
   new Department('IT')
 ];
   
-   selectedDepartment:Department;//Memebers
-   change:boolean=false;
+   selectedDepartment:Department;
 
     /*here is below method */
 
@@ -25,26 +24,27 @@ export class DepartmentComponent implements OnInit {
     {
       this.selectedDepartment=department;    
     }
-    
+    //Adding the new department
     AddDepartment()
     {
-       let temp:Department=new Department("DepartmentName");
+       let temp:Department=new Department("");
        this.departments.push(temp);
        this.selectedDepartment=temp;
     }
     //Update departement
     UpdateDepartment()
     {
-
+        this.selectedDepartment.Ischange=false;
     }
-   //REMove the selected object from the list
+   //Remove the selected object from the list
     DeleteDepartment()
     {
-
+      let indexofdepartment=this.departments.indexOf(this.selectedDepartment);
+      if(indexofdepartment>=0){
+       this.departments.splice(indexofdepartment,1);
+      }
     }
     
-
-
   constructor() 
   {
 
