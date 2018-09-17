@@ -1,0 +1,45 @@
+<div id="selectedEmployeeDisplay" *ngIf="employee">
+  <h3>Details of {{ employee.firstName }}:</h3>
+  {{ employee.displayDetailedInformation() }}
+</div>
+<br>
+
+<div id="employeeCRUD">
+  
+  <div class="otherInput">
+    <label for="fName">First Name:</label>
+    <input *ngIf="employee; else freshFirstNameInput" [(ngModel)]="employee.firstName" id="fName" placeholder="first name">
+  </div>
+
+  <ng-template #freshFirstNameInput>
+      <input id="fName" placeholder="first name">
+  </ng-template>
+  
+  <div class="otherInput">
+    <label for="lName">Last Name:</label>
+    <input *ngIf="employee; else freshLastNameInput" [(ngModel)]="employee.lastName" id="lName" placeholder="last name">
+  </div>
+
+  <ng-template #freshLastNameInput>
+    <input id="lName" placeholder="last name">
+  </ng-template>
+  
+  <div class="otherInput">
+    <label for="phone">Phone:</label>
+    <input *ngIf="employee; else freshPhoneInput" [(ngModel)]="employee.phone" id="phone" placeholder="06-12345678">
+  </div>
+
+  <ng-template #freshPhoneInput>
+    <input id="phone" placeholder="06-12345678">
+  </ng-template>
+
+  <div class="otherInput">
+    <label for="email">E-mail:</label>
+    <input *ngIf="employee; else freshEmailInput" [(ngModel)]="employee.email" id="email" placeholder="example@company.info">
+  </div>
+
+  <ng-template #freshEmailInput>
+    <input id="email" placeholder="example@company.info">
+  </ng-template>
+
+</div>

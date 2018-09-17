@@ -11,55 +11,11 @@
       {{ employee.displayBasicInformation() }}
     </li>
   </ul>
+  <app-employee-detail [employee]="selectedEmployee"></app-employee-detail>
   
-  <div id="selectedEmployeeDisplay" *ngIf="selectedEmployee">
-    <h3>Details of {{ selectedEmployee.firstName }}:</h3>
-    {{ selectedEmployee.displayDetailedInformation() }}
-  </div>
-  <br>
-
-  <div id="employeeCRUD">
-    
-    <div class="otherInput">
-      <label for="fName">First Name:</label>
-      <input *ngIf="selectedEmployee; else freshFirstNameInput" [(ngModel)]="selectedEmployee.firstName" id="fName" placeholder="first name">
-    </div>
-
-    <ng-template #freshFirstNameInput>
-        <input id="fName" placeholder="first name">
-    </ng-template>
-    
-    <div class="otherInput">
-      <label for="lName">Last Name:</label>
-      <input *ngIf="selectedEmployee; else freshLastNameInput" [(ngModel)]="selectedEmployee.lastName" id="lName" placeholder="last name">
-    </div>
-
-    <ng-template #freshLastNameInput>
-      <input id="lName" placeholder="last name">
-    </ng-template>
-    
-    <div class="otherInput">
-      <label for="phone">Phone:</label>
-      <input *ngIf="selectedEmployee; else freshPhoneInput" [(ngModel)]="selectedEmployee.phone" id="phone" placeholder="06-12345678">
-    </div>
-
-    <ng-template #freshPhoneInput>
-      <input id="phone" placeholder="06-12345678">
-    </ng-template>
-
-    <div class="otherInput">
-      <label for="email">E-mail:</label>
-      <input *ngIf="selectedEmployee; else freshEmailInput" [(ngModel)]="selectedEmployee.email" id="email" placeholder="example@company.info">
-    </div>
-
-    <ng-template #freshEmailInput>
-      <input id="email" placeholder="example@company.info">
-    </ng-template>
-
-    <button class="crudButton" (click)="createEmployee()">New Employee</button>
-    <button class="crudButton" (click)="changeEmployeeDetails()">Update Changes</button>
-    <button class="crudButton" (click)="cancelChanges()">Cancel Changes</button>
-    <button class="crudButton" (click)="deleteSelectedEmployee();">Delete Selected</button>
-  </div>
+  <button class="crudButton" (click)="createEmployee()">New Employee</button>
+  <button class="crudButton" (click)="changeEmployeeDetails()">Update Changes</button>
+  <button class="crudButton" (click)="cancelChanges()">Cancel Changes</button>
+  <button class="crudButton" (click)="deleteSelectedEmployee();">Delete Selected</button>
 </div>
 <br>
