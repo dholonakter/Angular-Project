@@ -7,13 +7,15 @@ import { TasksComponent } from './tasks/tasks.component';
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { DepartmentComponent } from './department/department.component';
+import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
     TasksComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    TasksDetailComponent
   ],
   imports: [
     BrowserModule,
