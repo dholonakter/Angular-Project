@@ -1,0 +1,45 @@
+.navbar{
+    background-color: lightblue;
+    min-height: auto;
+}
+.navbar div{
+    background-color: lightblue;
+    float: left;
+    margin-left: 5%;
+    cursor: pointer;  
+}
+.main-box{
+    
+}
+.main-box div{
+    border: 3px grey solid;
+    border-radius: 5%;
+    float: left;
+    width: 25%;
+    margin-left: 5%;
+}
+.tasks-box li{
+    display: block;
+    border: 3px red solid;
+    border-radius: 5%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.tasks-box ul{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.tasks-box div{
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 96%;
+    margin-bottom: 5px;
+}
+.hoi{
+    
+}

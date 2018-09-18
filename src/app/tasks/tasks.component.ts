@@ -12,7 +12,7 @@ selectedTask: Task;
 selectedTaskSave: Task;
 IsNewTask: boolean = false;
   
-  allTasks = [];
+   allTasks = [];
 
   constructor(private taskService: TasksService) {
     
@@ -21,6 +21,7 @@ IsNewTask: boolean = false;
   ngOnInit() {
     this.getAllTasks();
   }
+ 
   getAllTasks(): void{
     this.taskService.getAllTasks()
     .subscribe(data => this.allTasks = data);
