@@ -11,8 +11,8 @@ import { Observable } from 'rxjs';
 
 export class EmployeesComponent implements OnInit {
 
-  //employees: Employee[];
-  employees: Observable<Employee[]>;
+  employees: Employee[];
+  //employees: Observable<Employee[]>;
   selectedEmployee: Employee;
   
   // Keep track of the array index of the selected employee.
