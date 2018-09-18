@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EMPLOYEES } from '../mock-employees';
 import { Employee } from '../employee';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employees',
@@ -10,7 +10,7 @@ import { Employee } from '../employee';
 
 export class EmployeesComponent implements OnInit {
 
-  employees = EMPLOYEES;
+  employees: Employee[];
   selectedEmployee: Employee;
   
   // Keep track of the array index of the selected employee.
@@ -24,9 +24,15 @@ export class EmployeesComponent implements OnInit {
   selectedEmployeeOriginalPhone: string;
   selectedEmployeeOriginalEmail: string;
 
-  constructor() { }
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
+    this.getEmployees();
+  }
+
+  getEmployees() : void
+  {
+    this.employees = this.employeeService.getEmployees();
   }
 
   onSelect(employee: Employee)
