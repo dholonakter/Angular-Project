@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employees',
@@ -10,7 +11,8 @@ import { EmployeeService } from '../employee.service';
 
 export class EmployeesComponent implements OnInit {
 
-  employees: Employee[];
+  //employees: Employee[];
+  employees: Observable<Employee[]>;
   selectedEmployee: Employee;
   
   // Keep track of the array index of the selected employee.
