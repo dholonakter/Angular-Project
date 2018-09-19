@@ -5,10 +5,10 @@
 </div>
 <div>
   <ul>
-    <li class="content-box1" *ngFor="let employee of employees" 
-        [class.selected]="employee === selectedEmployee"
+    <li class="content-box1" *ngFor="let employee of employees"
+    [class.selected]="employee === selectedEmployee"
         (click)="onSelect(employee)">
-      {{ employee.displayBasicInformation() }}
+        {{ employee.first_name }}
     </li>
   </ul>
   <app-employee-detail [employee]="selectedEmployee"></app-employee-detail>

@@ -1,79 +1,37 @@
-export class Employee 
+export class Employee implements IEmployee 
 {
-    static id: number = 0;
+    birth_date: Date;
+    department_id: number;
+    first_name: string;
+    id: number;
+    last_name: string;
 
-    employeeId: number;
-    _firstName: string;
-    _lastName: string;
-    _phone: string;
-    _email: string;
 
-    detailsChanged: boolean;
-
-    constructor(firstName: string, lastName: string, phone: string, email: string) 
+    constructor(employeeId: number, departmentId: number, firstName: string, lastName: string, dob: Date) 
     {
-        // Assign a unique id to the employee.
-        this.employeeId = ++Employee.id;
-
-        this._firstName = firstName;
-        this._lastName = lastName;
-        this._phone = phone;
-        this._email = email;
-
-        this.detailsChanged = false;
-    }
-
-    get firstName()
-    {
-        return this._firstName;
-    }
-
-    set firstName(firstName: string)
-    {
-        this._firstName = firstName;
-        this.detailsChanged = true;
-    }
-
-    get lastName()
-    {
-        return this._lastName;
-    }
-
-    set lastName(lastName: string)
-    {
-        this._lastName = lastName;
-        this.detailsChanged = true;
-    }
-
-    get phone()
-    {
-        return this._phone;
-    }
-
-    set phone(phone: string)
-    {
-        this._phone = phone;
-        this.detailsChanged = true;
-    }
-
-    get email()
-    {
-        return this._email;
-    }
-
-    set email(email: string)
-    {
-        this._email = email;
-        this.detailsChanged = true;
+        this.birth_date = dob;
+        this.department_id = departmentId;
+        this.first_name = firstName;
+        this.id = employeeId;
+        this.last_name = lastName;
     }
 
     displayBasicInformation()
     {
-        return `ID: ${ this.employeeId }, ${ this._firstName } ${ this._lastName }`;
+        return `ID: ${ this.id }, ${ this.first_name } ${ this.last_name }`;
     }
 
     displayDetailedInformation()
     {
-        return `${ this.displayBasicInformation() }, phone: ${ this._phone }, e-mail: ${ this._email }`;
+        return `${ this.displayBasicInformation() }, works at dept.: ${ this.department_id }`;
     }
+}
+
+export interface IEmployee
+{
+  id: number;
+  department_id: number;
+  first_name: string;
+  last_name: string;
+  birth_date: Date;
 }

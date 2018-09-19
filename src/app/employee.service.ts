@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Employee } from './employee';
-import { EMPLOYEES } from './mock-employees';
+import { IEmployee } from './employee';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,12 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class EmployeeService {
 
-  private url='http://i875395.hera.fhict.nl/api/231896/employee';
+  private url: string = 'http://i875395.hera.fhict.nl/api/231896/employee';
 
-  getEmployees(): Employee[] 
+  getEmployees(): Observable<IEmployee[]>
   {
-    return EMPLOYEES;
-    //return this.http.get<Employee[]>(this.url);
+    return this.http.get<IEmployee[]>(this.url);
   }
 
   constructor(private http: HttpClient) { }

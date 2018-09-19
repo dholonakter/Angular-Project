@@ -1,6 +1,6 @@
 <div id="selectedEmployeeDisplay" *ngIf="employee">
   <h3>Details of {{ employee.firstName }}:</h3>
-  {{ employee.displayDetailedInformation() }}
+  <!-- {{ employee.displayDetailedInformation() }} -->
 </div>
 <br>
 
@@ -26,7 +26,7 @@
   
   <div class="otherInput">
     <label for="phone">Phone:</label>
-    <input *ngIf="employee; else freshPhoneInput" [(ngModel)]="employee.phone" id="phone" placeholder="06-12345678">
+    <input *ngIf="employee; else freshPhoneInput" [(ngModel)]="employee.employeeId" id="phone" placeholder="06-12345678">
   </div>
 
   <ng-template #freshPhoneInput>
@@ -35,7 +35,7 @@
 
   <div class="otherInput">
     <label for="email">E-mail:</label>
-    <input *ngIf="employee; else freshEmailInput" [(ngModel)]="employee.email" id="email" placeholder="example@company.info">
+    <input *ngIf="employee; else freshEmailInput" [(ngModel)]="employee.departmentId" id="email" placeholder="example@company.info">
   </div>
 
   <ng-template #freshEmailInput>
