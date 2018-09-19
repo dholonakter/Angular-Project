@@ -1,14 +1,32 @@
-
-<h2>Departments lists</h2>
-<p>Name of the departments:</p>
-<ul class="departments">
-    <li *ngFor="let department of departments"
-    (click)="OnSelect(department)">
-   <span class="badge">{{department.departmentid}}</span>{{department.departmentname}}
-  </li>
-</ul>
-
-
+<div class="container" ng-controller="crudcontroller">
+  <div class="panel panel-primary">
+      <div class="panel-heading">
+        Department
+       </div>
+      <div class="panel-body">
+        <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary btn-large"  data-target="#AddNe" data-toggle="toggle">Add New</button>      
+            <br>   
+            <br>   
+            <form>
+              <div class="form-group">
+                <input type="departmentname" class="form-control" id="DepartmentName" placeholder="name">
+              </div>
+             
+            </form>
+            <br>
+            <hr>
+          <div class="row">
+            <div class="col-xs-12">
+                <ul class="departments">
+                    <li *ngFor="let department of departments"
+                    (click)="OnSelect(department)">
+                   <span class="badge">{{department.departmentid}}</span>{{department.departmentname}}
+                  </li>
+                </ul>
+            </div>
+          </div>
 <div *ngIf="selectedDepartment">
     <h2>{{selectedDepartment.departmentname | uppercase}}</h2>
     <h3>below the information</h3>
@@ -22,10 +40,11 @@
     <div>
     </div>
 </div>
-
-    <button class="btn" (click)="AddDepartment()">AddDepartment</button>
-   <button class="btn" (click)="UpdateDepartment()">Change</button>
-    <button class="btn" (click)="DeleteDepartment()">delete</button>
-
-
-
+<div class="row">
+  <div class="col-xs-12">
+      <button type="button" class="btn btn-info"(click)="UpdateDepartment()" data-target="#update" data-toggle="modal">Update</button>
+      <button type="button" class="btn btn-danger"(click)="DeleteDepartment()" data-target="#delete" data-toggle="modal">Delete</button>  
+      <button type="button" class="btn btn-primary" data-target="#delete" data-toggle="modal">Clear</button>        
+      
+  </div>
+</div>
