@@ -5,17 +5,21 @@
        </div>
       <div class="panel-body">
         <div class="row">
-        <div class="col-xs-12">
-            <button class="btn btn-primary btn-large"  data-target="#AddNe" data-toggle="toggle">Add New</button>      
-            <br>   
-            <br>   
+        <div class="col-sm-5 form-group">
             <form>
-              <div class="form-group">
-                <input type="departmentname" class="form-control" id="departmentname" placeholder="name">
-              </div>
-             
-            </form>
-            <br>
+              <label for="department name">Department Name</label>
+                <input type="text" 
+                 id="name"
+                  class="form-control"
+                  #nameInput><!--local refrence-->
+             </form>
+            </div>
+          </div>
+            <div class="row">
+               <div class="clo-xs-12 btn">
+                <button class="btn btn-primary"(click)="AddDepartment(#nameInput)">Add New</button>      
+               </div>
+            </div>
             <hr>
           <div class="row">
             <div class="col-xs-12">
@@ -47,4 +51,16 @@
       <button type="button" class="btn btn-primary" data-target="#delete" data-toggle="modal">Clear</button>        
       
   </div>
+</div>
+
+<div class="b">
+<button class="btn btn-danger"[disabled]="alloweddepartment" (click)="OncreateDepartment()">add me</button>
+<!--<p>{{departmentcreation}}</p>-->
+<!--ngif returns true or false-->
+
+
+<p *ngIf="departmentcreated; else noserver">A  new department was created</p>
+<ng-template #noserver>
+  <p>No department was created</p>
+</ng-template>
 </div>

@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 
 import { Department } from '../model/department';
 
 @Component({
-  selector: 'app-department',
+  selector: 'app-department-edit',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
   /*here is list of departments*/
+ @ViewChild('nameinput') nameinputRef:ElementRef;
+  allownewdepartment=false;
+  departmentcreation='no department is crated';
+  departmentcreated=false;
+
   departments:Department[]=[
     new Department('Administration'),
   new Department('Finance'),
@@ -25,16 +30,18 @@ export class DepartmentComponent implements OnInit {
       this.selectedDepartment=department;    
     }
     //Adding the new department
-    AddDepartment(name:string)
+    AddDepartment(nameInput:HTMLInputElement)
     {
-       let temp:Department=new Department(name);
-       this.departments.push(temp);
-       this.selectedDepartment=temp;
+
+    //    let temp:Department=new Department(name);
+    //    this.departments.push(temp);
+    //    this.selectedDepartment=temp;
+    // 
     }
     //Update departement
     UpdateDepartment()
     {
-        this.selectedDepartment.Ischange=false;
+        this.selectedDepartment.Ischange=true;
     }
    //Remove the selected object from the list
     DeleteDepartment()
@@ -47,6 +54,9 @@ export class DepartmentComponent implements OnInit {
     
   constructor() 
   {
+     setTimeout(() => {
+       this.allownewdepartment=true;
+     }, 2000);
 
   }
   
@@ -54,6 +64,10 @@ export class DepartmentComponent implements OnInit {
   ngOnInit() 
   {
 
+  }
+  OncreateDepartment(){
+    this.departmentcreation="department is created";
+    this.departmentcreated=true;
   }
 
 }
