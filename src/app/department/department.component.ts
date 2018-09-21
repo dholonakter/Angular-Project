@@ -67,7 +67,7 @@ onDelete(index: number) {
   this.departments.splice(index, 1);
 } 
 onCancel() {
-  // Hide department entry section..
+  // Hide department entry section....
   this.showNew = false;
 }
 
