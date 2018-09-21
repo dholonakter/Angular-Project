@@ -10,32 +10,26 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { DepartmentComponent } from './department/department.component';
-import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     EmployeesComponent,
     TasksComponent,
     DepartmentComponent,
-<<<<<<< HEAD
-
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    NgbModule
-
-=======
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
+    TasksDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
->>>>>>> master
+    FormsModule,
+    NgbModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

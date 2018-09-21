@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { TasksComponent } from './tasks/tasks.component';
-import { Task } from './model/task';
+
 
 
 
@@ -12,6 +11,7 @@ import { Task } from './model/task';
 export class AppComponent {
   title = 'Web-2 Task Managing App.';
   
+
 
 
 }

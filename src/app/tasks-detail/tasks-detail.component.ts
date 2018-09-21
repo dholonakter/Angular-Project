@@ -7,7 +7,8 @@ import { Task } from '../model/task';
   styleUrls: ['./tasks-detail.component.css']
 })
 export class TasksDetailComponent implements OnInit {
-@Input() theTask: Task;
+
+  @Input() theTask: Task;
   constructor() { }
 
   ngOnInit() {

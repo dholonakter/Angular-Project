@@ -34,9 +34,11 @@ Onnew()
 }
 
 Onsave(){
-  if (this.kindofsumbmit==="save") {
+  if (this.kindofsumbmit==="save") 
+  {
     // Push department model object into department list.
     this.departments.push(this.depmodel);
+    
     }
      else 
      //update the existing property values based on model

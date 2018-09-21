@@ -30,6 +30,6 @@
     <button *ngIf="selectedTask" (click)="deleteClick()">Delete</button>
   </div>
 </div>
-<app-tasks-detail [theTask]="selectedTask"></app-tasks-detail>
+<app-tasks-detail [theTask]="this.selectedTask"></app-tasks-detail>
 
 
