@@ -1,9 +1,9 @@
-<div>
+<div style="margin-left: 20px;">
   <h2>
     Enlisted Employees:
   </h2>
 </div>
-<div>
+<div style="margin-left: 20px;">
   <ul>
     <li class="content-box1" *ngFor="let employee of employees"
     [class.selected]="employee === selectedEmployee"
@@ -12,10 +12,11 @@
     </li>
   </ul>
   <app-employee-detail [employee]="selectedEmployee"></app-employee-detail>
-  
-  <button class="crudButton" (click)="createEmployee()">New Employee</button>
-  <button class="crudButton" (click)="changeEmployeeDetails()">Update Changes</button>
-  <button class="crudButton" (click)="cancelChanges()">Cancel Changes</button>
-  <button class="crudButton" (click)="deleteSelectedEmployee();">Delete Selected</button>
+  <div>
+    <button class="crudButton" (click)="createEmployee()">New Employee</button>
+    <button class="crudButton" (click)="changeEmployeeDetails()">Update Changes</button>
+    <button class="crudButton" (click)="cancelChanges()">Cancel Changes</button>
+    <button class="crudButton" (click)="deleteSelectedEmployee();">Delete Selected</button>
+  </div>
 </div>
 <br>

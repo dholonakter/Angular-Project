@@ -1,3 +1,19 @@
 #employeeCRUD {
-    margin-left: 20px;
+    clear: left;
+    margin-bottom: 10px;
+}
+
+#selectedEmployeeDisplay {
+    padding-left: 1%;
+    border: 3px grey solid;
+    border-radius: 5%;
+    float: left;
+    width: 25%;
+    margin-bottom: 10px;
+}
+
+input {
+    margin-left: 5px;
+    width: 200px;
+    padding-left: 2px;
 }

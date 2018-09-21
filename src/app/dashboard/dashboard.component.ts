@@ -48,6 +48,5 @@ export class DashboardComponent implements OnInit {
   onSelectEmployee(emp: Employee)
   {
     this.selectedEmployee = emp;
-    this.selectedEmployeeDepartment = this.dept.departmentName(this.selectedEmployee.department_id);
   }
 }

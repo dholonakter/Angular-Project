@@ -16,8 +16,8 @@
     cursor: pointer;
 }
 
-#selectedEmployeeDisplay {
-    margin-left: 20px;
+ul {
+    padding-left: 0px;
 }
 
 button {
@@ -26,11 +26,6 @@ button {
 
 h3 {
     margin-bottom: 0px;
-}
-
-input {
-    margin-left: 5px;
-    width: 200px;
 }
 
 label {
