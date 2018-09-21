@@ -20,8 +20,10 @@ constructor() {
 
   this.departments.push(new Department(10,"Administration"));
   this.departments.push(new Department(20,"IT"));
-  this.departments.push(new Department(30,"Marketting"));
-
+  this.departments.push(new Department(65, "Software Engineering"));
+  this.departments.push(new Department(66, "Human Resources"));
+  this.departments.push(new Department(67, "Student Administration"));
+  this.departments.push(new Department(68, "ICT & Support"));
 }
 ngOnInit() {
 }
@@ -72,6 +74,17 @@ onDelete(index: number) {
 onCancel() {
   // Hide department entry section....
   this.showNew = false;
+}
+
+departmentName(id: number): string
+{
+  for (let department of this.departments)
+  {
+    if (id == department.departmenId)
+    {
+      return department.departmentname;
+    }
+  } 
 }
 
 }
