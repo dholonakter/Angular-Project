@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Department } from '../model/department';
 
@@ -76,15 +76,14 @@ onCancel() {
   this.showNew = false;
 }
 
-departmentName(id: number): string
+departmentName(department_id: number): string
 {
   for (let department of this.departments)
   {
-    if (id == department.departmenId)
+    if (department_id == department.departmenId)
     {
       return department.departmentname;
     }
   } 
 }
-
 }

@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Task } from '../model/task';
 import { TasksService } from '../tasks.service';
 import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { DepartmentComponent } from '../department/department.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  providers: [DepartmentComponent]
 })
 export class DashboardComponent implements OnInit {
+
   public selectedMenu: string;
   public selectedTask: Task;
   public allTasks:Task[];
@@ -18,13 +21,14 @@ export class DashboardComponent implements OnInit {
   employees: Employee[];
 
   public all
-  constructor(private taskService: TasksService, private employeeService: EmployeeService) { }
+  constructor(private taskService: TasksService, private employeeService: EmployeeService, private dept: DepartmentComponent) { }
 
   ngOnInit() {
     this.onSelectMenu("Dashboard");
     this.getAllTasks();
     this.getEmployees();
   }
+
   onSelectMenu(menu:string){
     this.selectedMenu = menu;
   }
@@ -44,6 +48,6 @@ export class DashboardComponent implements OnInit {
   onSelectEmployee(emp: Employee)
   {
     this.selectedEmployee = emp;
+    this.selectedEmployeeDepartment = this.dept.departmentName(this.selectedEmployee.department_id);
   }
-
 }

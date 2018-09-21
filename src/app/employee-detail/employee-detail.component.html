@@ -1,7 +1,7 @@
 <div id="selectedEmployeeDisplay" *ngIf="employee">
   <h3>Details of {{ employee.first_name }}:</h3>
   ID: {{ employee.id }}, {{ employee.first_name }} {{ employee.last_name }} 
-  born at: {{ employee.birth_date }}, working at department: {{ employee.department_id }}
+  born at: {{ employee.birth_date }}, working at department: {{ dept.departmentName(employee.department_id) }}
 </div>
 <br>
 
