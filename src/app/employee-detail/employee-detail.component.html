@@ -1,6 +1,7 @@
 <div id="selectedEmployeeDisplay" *ngIf="employee">
-  <h3>Details of {{ employee.firstName }}:</h3>
-  <!-- {{ employee.displayDetailedInformation() }} -->
+  <h3>Details of {{ employee.first_name }}:</h3>
+  ID: {{ employee.id }}, {{ employee.first_name }} {{ employee.last_name }} 
+  born at: {{ employee.birth_date }}, working at department: {{ employee.department_id }}
 </div>
 <br>
 
@@ -8,7 +9,7 @@
   
   <div class="otherInput">
     <label for="fName">First Name:</label>
-    <input *ngIf="employee; else freshFirstNameInput" [(ngModel)]="employee.firstName" id="fName" placeholder="first name">
+    <input *ngIf="employee; else freshFirstNameInput" [(ngModel)]="employee.first_name" id="fName" placeholder="first name">
   </div>
 
   <ng-template #freshFirstNameInput>
@@ -17,7 +18,7 @@
   
   <div class="otherInput">
     <label for="lName">Last Name:</label>
-    <input *ngIf="employee; else freshLastNameInput" [(ngModel)]="employee.lastName" id="lName" placeholder="last name">
+    <input *ngIf="employee; else freshLastNameInput" [(ngModel)]="employee.last_name" id="lName" placeholder="last name">
   </div>
 
   <ng-template #freshLastNameInput>
@@ -25,21 +26,21 @@
   </ng-template>
   
   <div class="otherInput">
-    <label for="phone">Phone:</label>
-    <input *ngIf="employee; else freshPhoneInput" [(ngModel)]="employee.employeeId" id="phone" placeholder="06-12345678">
+    <label for="dob">Date of birth:</label>
+    <input *ngIf="employee; else freshDobInput" [(ngModel)]="employee.birth_date" id="dob" placeholder="2000-01-01">
   </div>
 
-  <ng-template #freshPhoneInput>
-    <input id="phone" placeholder="06-12345678">
+  <ng-template #freshDobInput>
+    <input id="dob" placeholder="2000-01-01">
   </ng-template>
 
   <div class="otherInput">
-    <label for="email">E-mail:</label>
-    <input *ngIf="employee; else freshEmailInput" [(ngModel)]="employee.departmentId" id="email" placeholder="example@company.info">
+    <label for="deptId">Department id:</label>
+    <input *ngIf="employee; else fresDeptIdInput" [(ngModel)]="employee.department_id" id="deptId" placeholder="20">
   </div>
 
-  <ng-template #freshEmailInput>
-    <input id="email" placeholder="example@company.info">
+  <ng-template #fresDeptIdInput>
+    <input id="deptId" placeholder="20">
   </ng-template>
 
 </div>

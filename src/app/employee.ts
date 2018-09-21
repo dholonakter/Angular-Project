@@ -16,12 +16,12 @@ export class Employee implements IEmployee
         this.last_name = lastName;
     }
 
-    displayBasicInformation()
+    displayBasicInformation(): string
     {
         return `ID: ${ this.id }, ${ this.first_name } ${ this.last_name }`;
     }
 
-    displayDetailedInformation()
+    displayDetailedInformation(): string
     {
         return `${ this.displayBasicInformation() }, works at dept.: ${ this.department_id }`;
     }
@@ -34,4 +34,7 @@ export interface IEmployee
   first_name: string;
   last_name: string;
   birth_date: Date;
+
+  displayBasicInformation(): string;
+  displayDetailedInformation(): string;
 }
