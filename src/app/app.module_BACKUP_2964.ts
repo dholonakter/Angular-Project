@@ -8,22 +8,25 @@ import { TasksComponent } from './tasks/tasks.component';
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { DepartmentComponent } from './department/department.component';
-import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     EmployeesComponent,
     TasksComponent,
     DepartmentComponent,
+    TasksDetailComponent,
+    DashboardComponent,
     EmployeeDetailComponent
+    
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
