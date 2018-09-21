@@ -1,0 +1,46 @@
+<div id="selectedEmployeeDisplay" *ngIf="employee">
+  <h3>Details of {{ employee.first_name }}:</h3>
+  ID: {{ employee.id }}, {{ employee.first_name }} {{ employee.last_name }} 
+  born at: {{ employee.birth_date }}, working at department: {{ employee.department_id }}
+</div>
+<br>
+
+<div id="employeeCRUD">
+  
+  <div class="otherInput">
+    <label for="fName">First Name:</label>
+    <input *ngIf="employee; else freshFirstNameInput" [(ngModel)]="employee.first_name" id="fName" placeholder="first name">
+  </div>
+
+  <ng-template #freshFirstNameInput>
+      <input id="fName" placeholder="first name">
+  </ng-template>
+  
+  <div class="otherInput">
+    <label for="lName">Last Name:</label>
+    <input *ngIf="employee; else freshLastNameInput" [(ngModel)]="employee.last_name" id="lName" placeholder="last name">
+  </div>
+
+  <ng-template #freshLastNameInput>
+    <input id="lName" placeholder="last name">
+  </ng-template>
+  
+  <div class="otherInput">
+    <label for="dob">Date of birth:</label>
+    <input *ngIf="employee; else freshDobInput" [(ngModel)]="employee.birth_date" id="dob" placeholder="2000-01-01">
+  </div>
+
+  <ng-template #freshDobInput>
+    <input id="dob" placeholder="2000-01-01">
+  </ng-template>
+
+  <div class="otherInput">
+    <label for="deptId">Department id:</label>
+    <input *ngIf="employee; else fresDeptIdInput" [(ngModel)]="employee.department_id" id="deptId" placeholder="20">
+  </div>
+
+  <ng-template #fresDeptIdInput>
+    <input id="deptId" placeholder="20">
+  </ng-template>
+
+</div>

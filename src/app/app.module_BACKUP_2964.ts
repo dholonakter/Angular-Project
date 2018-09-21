@@ -8,9 +8,12 @@ import { TasksComponent } from './tasks/tasks.component';
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { DepartmentComponent } from './department/department.component';
+<<<<<<< HEAD
 import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+=======
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+>>>>>>> employeeService
 
 @NgModule({
   declarations: [
@@ -18,12 +21,23 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
     EmployeesComponent,
     TasksComponent,
     DepartmentComponent,
+<<<<<<< HEAD
+    TasksDetailComponent,
+    DashboardComponent
+    
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
+=======
     EmployeeDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
+>>>>>>> employeeService
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
