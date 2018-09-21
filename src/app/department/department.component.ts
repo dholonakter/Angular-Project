@@ -24,7 +24,7 @@ constructor() {
 }
 ngOnInit() {
 }
-//adding the value to the department
+//adding the value to the department...
 Onnew() 
 {
   this.depmodel=new Department();
