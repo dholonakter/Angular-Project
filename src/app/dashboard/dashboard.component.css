@@ -41,3 +41,11 @@
 .hoi{
     
 }
+
+.boxHeader {
+    text-align: center;
+}
+
+.selected{
+    background-color: rgb(228, 228, 228);
+}

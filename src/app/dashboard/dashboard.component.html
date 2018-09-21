@@ -14,6 +14,7 @@
 <div class="main-box" *ngIf="this.selectedMenu === 'Dashboard'">
   
   <div class="tasks-box">
+    <h3 class="boxHeader">Tasks</h3>
     <ul>
       <li  *ngFor="let task1 of allTasks" (click)="onSelectTask(task1)" [class.selected]="task1 === selectedTask">         
         <b>Name:</b> {{task1.name}}<br>         
@@ -28,11 +29,25 @@
       <b>Date:</b> {{selectedTask.due_date}}<br> 
     </div>    
   </div>
-  
-  <div>
-    Box for Employees!
+
+  <div class="tasks-box">
+    <h3 class="boxHeader">Employees</h3>
+    <ul>
+      <li *ngFor="let employee of employees" (click)="onSelectEmployee(employee)" [class.selected]="employee === selectedEmployee">         
+        <b>ID:</b> {{ employee.id }}<br>         
+        <b>Name:</b> {{ employee.first_name }} {{ employee.last_name }}<br> 
+      </li>
+    </ul>
+    <div *ngIf="selectedEmployee">
+      <b>ID:</b> {{ selectedEmployee.id }}<br> 
+      <b>Name:</b> {{ selectedEmployee.first_name }} {{ selectedEmployee.last_name }}<br> 
+      <b>Date of birth:</b> {{ selectedEmployee.birth_date }}<br> 
+      <b>Department ID:</b> {{ selectedEmployee.department_id }}<br> 
+    </div>    
   </div>
+
   <div>
+    <h3 class="boxHeader">Departments</h3>
     Box for Departments!
   </div>
   

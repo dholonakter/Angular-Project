@@ -5,6 +5,7 @@
 .selected{
     background-color: rgb(228, 228, 228);
 }
+
 .content-box1{
     display: block;
     border: 3px red solid;
