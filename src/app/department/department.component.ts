@@ -28,22 +28,19 @@ export class DepartmentComponent implements OnInit {
     
     AddDepartment()
     {
-       let temp:Department=new Department("");
+       let temp:Department=new Department("DepartmentName");
        this.departments.push(temp);
        this.selectedDepartment=temp;
     }
     //Update departement
     UpdateDepartment()
     {
-        this.selectedDepartment.Ischange=false;
+
     }
-   //Remove the selected object from the list
+   //REMove the selected object from the list
     DeleteDepartment()
     {
-      let indexofdepartment=this.departments.indexOf(this.selectedDepartment);
-      if(indexofdepartment>=0){
-       this.departments.splice(indexofdepartment,1);
-      }
+
     }
     
 

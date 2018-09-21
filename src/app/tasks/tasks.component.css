@@ -5,7 +5,7 @@
     display: block;
     border: 3px red solid;
     border-radius: 5%;
-    width: 30%;
+    width: 21%;
     float: left;
     margin-right: 2%;
     margin-bottom: 1%;
@@ -13,17 +13,6 @@
     cursor: pointer;
 }
 
-
-.valueChange-box{
-    margin-left: 20px;
-}
 .rs{
    clear: both;
-}
-
-label {
-    width: 150px;
-}
-button {
-    margin-right: 5px;
 }
