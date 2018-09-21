@@ -3,4 +3,6 @@ export class Department {
     public departmenId: number=0,
     public departmentname: string = '',
   ) {}    
-}
+  }
+  
+

@@ -8,7 +8,8 @@ import { Department } from '../model/department';
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
-
+  /*here is list of departments*/
+  
 departments:Department[]=[];
 selectedrow:number;
 depmodel: Department;
@@ -70,6 +71,5 @@ onCancel() {
   // Hide department entry section....
   this.showNew = false;
 }
-
 
 }

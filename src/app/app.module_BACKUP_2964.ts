@@ -5,14 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { TasksComponent } from './tasks/tasks.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { DepartmentComponent } from './department/department.component';
+<<<<<<< HEAD
 import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+=======
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+>>>>>>> employeeService
 
 @NgModule({
   declarations: [
@@ -21,13 +22,14 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
     TasksComponent,
     DepartmentComponent,
 <<<<<<< HEAD
-
+    TasksDetailComponent,
+    DashboardComponent
+    
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModule
-
+    HttpClientModule
 =======
     EmployeeDetailComponent
   ],
@@ -35,7 +37,7 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
     BrowserModule,
     HttpClientModule,
     FormsModule
->>>>>>> master
+>>>>>>> employeeService
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
