@@ -9,7 +9,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { DepartmentComponent } from './department/department.component';
-import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { HeaderComponent } from './header/header.component';
     EmployeesComponent,
     TasksComponent,
     DepartmentComponent,
-    HeaderComponent,
 
   ],
   imports: [

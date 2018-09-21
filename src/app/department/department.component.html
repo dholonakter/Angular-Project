@@ -1,66 +1,61 @@
-<div class="container" ng-controller="crudcontroller">
-  <div class="panel panel-primary">
-      <div class="panel-heading">
-        Department
-       </div>
-      <div class="panel-body">
-        <div class="row">
-        <div class="col-sm-5 form-group">
-            <form>
-              <label for="department name">Department Name</label>
-                <input type="text" 
-                 id="name"
-                  class="form-control"
-                  #nameInput><!--local refrence-->
-             </form>
-            </div>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          Department
+         </div>
+        <div class="panel-body">
+          <div class="row">
+                <button type="button" class="btn btn-success add " (click)="Onnew()">+ Add New</button>
+
+              <div class="col-sm-5 form-group inputarea ">
+                    <div class="regentry" *ngIf="showNew">
+                            <form (ngSubmit)="Onsave()">
+                              <div class="form-group row">
+                                <label for="id-input" class="col-2 col-form-label">Department Id</label>
+                                <div class="col-5">
+                                  <input class="form-control" type="value" [(ngModel)]="depmodel.departmenId" name="id">
+                                </div>
+                              </div>
+                              <div class="form-group row">
+                                <label for="departmentname-input" class="col-2 col-form-label">DepartmentName</label>
+                                <div class="col-10">
+                                  <input class="form-control" type="text" [(ngModel)]="depmodel.departmentname" name="departmentname">
+                                </div>
+                              </div>
+                              <button type="submit" class="btn btn-success ">{{kindofsumbmit}}</button>
+                              <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+                            </form>
+                        
+                  </div>
+                  </div>
           </div>
             <div class="row">
-               <div class="clo-xs-12 btn">
-                <button class="btn btn-primary"(click)="AddDepartment(#nameInput)">Add New</button>      
-               </div>
-            </div>
-            <hr>
-          <div class="row">
-            <div class="col-xs-12">
-                <ul class="departments">
-                    <li *ngFor="let department of departments"
-                    (click)="OnSelect(department)">
-                   <span class="badge">{{department.departmentid}}</span>{{department.departmentname}}
-                  </li>
-                </ul>
-            </div>
+                <div class="col-xs-12">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                              <th scope="col">Index</th>
+                            <th scope="col">Department ID</th>
+                            <th scope="col">Department Name</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dep of departments;let i = index">
+                                <th scope="row">{{i+1}}</th> 
+                                <td>{{dep.departmenId}}</td>
+                                <td>{{ dep.departmentname }}</td>
+                                <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+
+                                <td><button class="btn btn-danger"(click)="onDelete(i)"type="submit">Delete</button></td>
+                              </tr>
+                        </tbody>
+                      </table>
+                </div>
+              </div>
           </div>
-<div *ngIf="selectedDepartment">
-    <h2>{{selectedDepartment.departmentname | uppercase}}</h2>
-    <h3>below the information</h3>
-    <div><span>The selected id is: </span>{{selectedDepartment.departmentid}}</div><br>
-    <div><span>And Department is: </span>{{selectedDepartment.departmentname}}</div><br>
-    <div>
-      <label>name:
-        <input [(ngModel)]="selectedDepartment.departmentname" placeholder="name">
-      </label>
-    </div>
-    <div>
-    </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-      <button type="button" class="btn btn-info"(click)="UpdateDepartment()" data-target="#update" data-toggle="modal">Update</button>
-      <button type="button" class="btn btn-danger"(click)="DeleteDepartment()" data-target="#delete" data-toggle="modal">Delete</button>  
-      <button type="button" class="btn btn-primary" data-target="#delete" data-toggle="modal">Clear</button>        
-      
-  </div>
-</div>
-
-<div class="b">
-<button class="btn btn-danger"[disabled]="alloweddepartment" (click)="OncreateDepartment()">add me</button>
-<!--<p>{{departmentcreation}}</p>-->
-<!--ngif returns true or false-->
-
-
-<p *ngIf="departmentcreated; else noserver">A  new department was created</p>
-<ng-template #noserver>
-  <p>No department was created</p>
-</ng-template>
-</div>
+  
+  
+            
+            

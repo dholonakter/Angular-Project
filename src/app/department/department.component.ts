@@ -1,73 +1,75 @@
-import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Department } from '../model/department';
 
 @Component({
-  selector: 'app-department-edit',
+  selector: 'app-department',
   templateUrl: './department.component.html',
   styleUrls: ['./department.component.css']
 })
 export class DepartmentComponent implements OnInit {
-  /*here is list of departments*/
- @ViewChild('nameinput') nameinputRef:ElementRef;
-  allownewdepartment=false;
-  departmentcreation='no department is crated';
-  departmentcreated=false;
 
-  departments:Department[]=[
-    new Department('Administration'),
-  new Department('Finance'),
-  new Department('Marketing'),
-  new Department('IT')
-];
-  
-   selectedDepartment:Department;
+departments:Department[]=[];
+selectedrow:number;
+depmodel: Department;
+showNew:boolean=false;
+kindofsumbmit:string="save";
+constructor() {
+  //adding default department data
 
-    /*here is below method */
+  this.departments.push(new Department(10,"Administration"));
+  this.departments.push(new Department(20,"IT"));
+  this.departments.push(new Department(30,"Marketting"));
 
-    OnSelect(department:Department):void
-    {
-      this.selectedDepartment=department;    
-    }
-    //Adding the new department
-    AddDepartment(nameInput:HTMLInputElement)
-    {
+}
+ngOnInit() {
+}
+//adding the value to the department
+Onnew() 
+{
+  this.depmodel=new Department();
+  this.kindofsumbmit='save';
+  this.showNew=true;
+}
 
-    //    let temp:Department=new Department(name);
-    //    this.departments.push(temp);
-    //    this.selectedDepartment=temp;
-    // 
+Onsave(){
+  if (this.kindofsumbmit==="save") {
+    // Push department model object into department list.
+    this.departments.push(this.depmodel);
     }
-    //Update departement
-    UpdateDepartment()
-    {
-        this.selectedDepartment.Ischange=true;
-    }
-   //Remove the selected object from the list
-    DeleteDepartment()
-    {
-      let indexofdepartment=this.departments.indexOf(this.selectedDepartment);
-      if(indexofdepartment>=0){
-       this.departments.splice(indexofdepartment,1);
-      }
-    }
+     else 
+     //update the existing property values based on model
+     {
+      this.departments[this.selectedrow].departmenId = this.depmodel.departmenId;
+      this.departments[this.selectedrow].departmentname = this.depmodel.departmentname; 
+     }
+     //hide department entry section
+     this.showNew=false;
     
-  constructor() 
-  {
-     setTimeout(() => {
-       this.allownewdepartment=true;
-     }, 2000);
+}
+// This method associate to Edit Button.
+onEdit(index: number) 
+{
+// Assign selected table row index.
+this.selectedrow = index;
+// Initiate new department.
+this.depmodel = new Department();
+// Retrieve selected department from list and assign to model.
+this.depmodel = Object.assign({}, this.departments[this.selectedrow]);//intersting one
+// Change submitype to Update.
+this.kindofsumbmit = 'Update';
+// Display department entry section.
+this.showNew = true;
+}
+//
+onDelete(index: number) {
+  // Delete the corresponding department entry from the list.
+  this.departments.splice(index, 1);
+} 
+onCancel() {
+  // Hide department entry section.
+  this.showNew = false;
+}
 
-  }
-  
-
-  ngOnInit() 
-  {
-
-  }
-  OncreateDepartment(){
-    this.departmentcreation="department is created";
-    this.departmentcreated=true;
-  }
 
 }
