@@ -1,23 +1,35 @@
-your tasks:
+<h2>Your Tasks:</h2>
 <ul>
     <li class="content-box1" *ngFor="let task1 of allTasks" (click)="onSelect(task1)" [class.selected]="task1 === selectedTask">
-      <b>Title:</b> {{ task1.title }}<br> <b>Desc:</b> {{task1.description}}<br> <b>Author:</b> {{task1.author}}
+      <b>ID:</b> {{ task1.id }}<br> 
+      <b>Department ID:</b> {{task1.department_id}}<br> 
+      <b>Name:</b> {{task1.name}}<br> 
+      <b>Employees:</b> {{task1.employees}}<br> 
+      <b>Date:</b> {{task1.due_date}}<br> 
     </li>
 </ul>
-<div class="rs"></div>
-<p *ngIf="selectedTask">Your selected task is {{ this.selectedTask.title }} given by {{ this.selectedTask.author }}</p>
 
-<div *ngIf="selectedTask">
-<label>Title </label>
-<input [(ngModel)]="this.selectedTask.title" placeholder="title"><br>
-<label>Desc </label>
-<input [(ngModel)]="this.selectedTask.description" placeholder="desc"><br>
-<label>Given By </label>
-<input [(ngModel)]="this.selectedTask.author" placeholder="given by">
+<div class="rs"></div>
+<div class="valueChange-box">
+  <div *ngIf="selectedTask">
+    <label>ID: </label>
+    <input type="number" [(ngModel)]="this.selectedTask.id" placeholder="ID"><br>
+    <label>Department ID: </label>
+    <input type="number" [(ngModel)]="this.selectedTask.department_id" placeholder="Department ID"><br>
+    <label>Name: </label>
+    <input type="text" [(ngModel)]="this.selectedTask.name" placeholder="Name"><br>
+    <label>Employees: </label>
+    <input type="text"[(ngModel)]="this.selectedTask.employees" placeholder="Employees"><br>
+    <label>Date: </label>
+    <input type="date"[(ngModel)]="this.selectedTask.due_date" placeholder="Date">
+  </div>
+  <div>
+    <button (click)="newTaskClick()">New Task</button>
+    <button *ngIf="selectedTask" (click)="saveClick()">Save</button>
+    <button *ngIf="selectedTask" (click)="cancelClick()">Cancel</button>
+    <button *ngIf="selectedTask" (click)="deleteClick()">Delete</button>
+  </div>
 </div>
-<div>
-  <button (click)="newTaskClick()">New Task</button>
-  <button *ngIf="selectedTask" (click)="saveClick()">Save</button>
-  <button *ngIf="selectedTask" (click)="cancelClick()">Cancel</button>
-  <button *ngIf="selectedTask" (click)="deleteClick()">Delete</button>
-</div>
+<app-tasks-detail [theTask]="this.selectedTask"></app-tasks-detail>
+
+
