@@ -52,6 +52,10 @@
   }
   .add{
     float: left;
+
+  }
+  .delete{
+    float: left;
   }
   .inputarea{
     clear: left;
@@ -59,4 +63,5 @@
     margin-top: 30px;;
   }
   
+
   
