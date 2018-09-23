@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Department } from '../model/department';
+import { EmployeeService } from '../employee.service';
+import { DepartmentService } from '../service/department/department.service';
+import { Observable } from 'rxjs';
+import { Employee } from '../employee';
 
 @Component({
   selector: 'app-department',
@@ -11,29 +15,82 @@ export class DepartmentComponent implements OnInit {
   /*here is list of departments*/
   
 departments:Department[]=[];
+
+employees:Employee[]=[];
+
 selectedrow:number;
 depmodel: Department;
 showNew:boolean=false;
 kindofsumbmit:string="save";
-constructor() {
-  //adding default department data
+selectedDepartment:Department;
 
-  this.departments.push(new Department(10,"Administration"));
-  this.departments.push(new Department(20,"IT"));
-  this.departments.push(new Department(65, "Software Engineering"));
-  this.departments.push(new Department(66, "Human Resources"));
-  this.departments.push(new Department(67, "Student Administration"));
-  this.departments.push(new Department(68, "ICT & Support"));
+constructor(private employeeService: EmployeeService,private departmentService: DepartmentService) {
+  //adding default department data
+  /*
+  this.departments.push(new Department(10,"Administration",""));
+  this.departments.push(new Department(20,"IT",""));
+  this.departments.push(new Department(65, "Software Engineering",""));
+  this.departments.push(new Department(66, "Human Resources",""));
+  this.departments.push(new Department(67, "Student Administration",""));
+  this.departments.push(new Department(68, "ICT & Support",""));
+  */
+  this.getDepartments();
+  this.getEmployees();
 }
+
+addEmployeesToDepartment():void{
+
+  var index:number=0;
+  for(index=0; index < this.departments.length;index++)
+  {
+
+
+    this.departments[index].employees=[];
+
+    for(let emp of this.employees)
+    {
+      if(emp.department_id==this.departments[index].id){
+        
+        this.departments[index].employees.push(emp);
+      }
+    }
+   
+  }
+}
+getDepartments(): void {
+  this.departmentService.getAllDepartments()
+      .subscribe(dep => this.departments = dep);
+    }
+
+getEmployees(): void {
+  this.employeeService.getEmployees()
+      .subscribe(emps => this.employees = emps
+        );
+}
+
+
 ngOnInit() {
 }
-//adding the value to the department...
-Onnew() 
-{
-  this.depmodel=new Department();
-  this.kindofsumbmit='save';
-  this.showNew=true;
+
+
+
+Onselect(department:Department):void{
+
+  this.addEmployeesToDepartment();
+  this.selectedDepartment=department;
 }
+
+//
+
+//adding the value to the department...
+addNewDepartment(name: HTMLInputElement)
+    {
+      console.log(name.value);
+
+       //let temp:Department=new Department(this.departments.length+1,name.value,building.value);
+       //this.departments.push(temp); 
+
+    }
 
 Onsave(){
   if (this.kindofsumbmit==="save") 
@@ -45,8 +102,8 @@ Onsave(){
      else 
      //update the existing property values based on model
      {
-      this.departments[this.selectedrow].departmenId = this.depmodel.departmenId;
-      this.departments[this.selectedrow].departmentname = this.depmodel.departmentname; 
+      this.departments[this.selectedrow].id = this.depmodel.id;
+      this.departments[this.selectedrow].name = this.depmodel.name; 
      }
      //hide department entry section
      this.showNew=false;
@@ -80,9 +137,9 @@ departmentName(department_id: number): string
 {
   for (let department of this.departments)
   {
-    if (department_id == department.departmenId)
+    if (department_id == department.id)
     {
-      return department.departmentname;
+      return department.name;
     }
   } 
 }

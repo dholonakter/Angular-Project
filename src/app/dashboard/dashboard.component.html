@@ -46,9 +46,23 @@
     </div>    
   </div>
 
-  <div>
+  <div class="tasks-box">
     <h3 class="boxHeader">Departments</h3>
-    Box for Departments!
+    <ul>
+      <li *ngFor="let department of departments" (click)="onSelectDepartment(department)" [class.selected]="department === selectedDepartment">         
+        <b>ID:</b> {{ department.id }}<br>         
+        <b>Name:</b> {{ department.name }}<br> 
+      </li>
+    </ul>
+    <div *ngIf="selectedDepartment">
+        <p>Selected Department: {{selectedDepartment.name}}</p>
+        <p>Employees wroking in this departments</p>
+        <ul *ngFor="let emp of SelectedDepartmentEmployees">
+          <li>{{ emp.first_name }} {{ emp.last_name }}</li>
+        </ul>
+        <p>Task for this department</p>
+        <ul *ngFor="let task of SelectedDepartmentTasks">
+            <li>{{ task.name }}</li>
+          </ul>
+    </div>
   </div>
-  
-</div>
