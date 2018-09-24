@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
 
   getEmployeesOfSelectedDepartment(department:Department){
     if(department!=null){
-      this.SelectedDepartmentEmployees = [];
+      this.SelectedDepartmentEmployees = [];//assign the empty list to avoid to add the new elemeents
     for(let emp of this.employees)
     {
       if(emp.department_id==department.id){
