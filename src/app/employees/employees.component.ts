@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee, IEmployee } from '../employee';
+import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { EmployeeFilterPipe } from '../employee-filter.pipe';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  styleUrls: ['./employees.component.css'],
+  
 })
 
 export class EmployeesComponent implements OnInit {
