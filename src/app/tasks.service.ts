@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TasksService {
-private taskJsonUrl: string = 'http://i875395.hera.fhict.nl/api/399717/task';
+private taskJsonUrl: string = 'http://i875395.hera.fhict.nl/api/231896/task';
   constructor(private http: HttpClient) { }
 
   getAllTasks(): Observable<ITask[]> {

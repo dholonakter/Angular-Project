@@ -13,6 +13,7 @@ import { DepartmentComponent } from './department/department.component';
 import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
+import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
     TasksComponent,
     DepartmentComponent,
     EmployeeDetailComponent,
-    TasksDetailComponent
+    TasksDetailComponent,
+    DepartmentDetailComponent
   ],
   imports: [
     BrowserModule,

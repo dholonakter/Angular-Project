@@ -5,27 +5,22 @@
          </div>
         <div class="panel-body">
           <div class="row">
-                <button type="button" class="btn btn-success add " (click)="Onnew()">+ Add New</button>
-              <div class="col-sm-5 form-group inputarea ">
-                    <div class="regentry" *ngIf="showNew">
-                            <form (ngSubmit)="Onsave()">
-                              <div class="form-group row">
-                                <label for="id-input" class="col-2 col-form-label">Department Id</label>
-                                <div class="col-5">
-                                  <input class="form-control" type="value" [(ngModel)]="depmodel.departmenId" name="id">
-                                </div>
-                              </div>
-                              <div class="form-group row">
-                                <label for="departmentname-input" class="col-2 col-form-label">DepartmentName</label>
-                                <div class="col-10">
-                                  <input class="form-control" type="text" [(ngModel)]="depmodel.departmentname" name="departmentname">
-                                </div>
-                              </div>
-                              <button type="submit" class="btn btn-success ">{{kindofsumbmit}}</button>
-                              <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
-                            </form>
-                        
-                  </div>
+              <div class="col-sm-5 form-group">
+                  <form>
+                    <label for="department name">Name</label>
+                      <input type="text" 
+                       id="name"
+                        class="form-control"
+                        #name1>    
+                   </form>
+                   <form>
+                      <label for="department building">Building</label>
+                        <input type="text" 
+                         id="building"
+                          class="form-control"
+                          #building1>    
+                     </form>
+                   <button type="button" class="btn btn-success add " (click)="addDepartment(name1)">+ Add New</button>
                   </div>
           </div>
             <div class="row">
@@ -33,26 +28,29 @@
                     <table class="table">
                         <thead>
                           <tr>
-                              <th scope="col">Index</th>
+                              <th scope="col">#</th>
                             <th scope="col">Department ID</th>
                             <th scope="col">Department Name</th>
-                            <th scope="">Edit</th>
-                            <th scope="col">Delete</th>
                           </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let dep of departments;let i = index"> <!--*ngfor loop through departments array and dispaly all properties value and i creates a template local variable to get the index of the array -->
+                            <tr *ngFor="let dep of departments; let i = index"
+                            (click)="Onselect(dep)"
+                            [class.active]="dep === selectedDepartment"> <!--*ngfor loop through departments array and dispaly all properties value and i creates a template local variable to get the index of the array -->
                                 <th scope="row">{{i+1}}</th> 
-                                <td>{{dep.departmenId}}</td>
-                                <td>{{ dep.departmentname }}</td>
+                                <td>{{dep.id}}</td>
+                                <td>{{ dep.name }}</td>
                                 <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
-                                <td><button class="btn btn-danger"(click)="onDelete(i)"type="submit">Delete</button></td>
+                                <button type="button" class="btn btn-danger"(click)="onDelete(i)">Delete</button>
                               </tr>
                         </tbody>
                       </table>
                 </div>
               </div>
+              <app-department-detail [departmentDetail]="selectedDepartment"></app-department-detail>
+
           </div>
+          
   
   
             
