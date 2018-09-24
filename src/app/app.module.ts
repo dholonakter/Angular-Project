@@ -33,7 +33,8 @@ import { EmployeeFilterPipe } from './employee-filter.pipe';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgbModule.forRoot()
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
