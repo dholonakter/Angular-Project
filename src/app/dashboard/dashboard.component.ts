@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
 
   getEmployeesOfSelectedDepartment(department:Department){
     if(department!=null){
-      
+      this.SelectedDepartmentEmployees = [];
     for(let emp of this.employees)
     {
       if(emp.department_id==department.id){
@@ -81,8 +81,10 @@ export class DashboardComponent implements OnInit {
   }
 
   getTasksOfSelectedDepartment(department:Department){
+    
     if(department!=null){
-      
+      this.SelectedDepartmentTasks = [];
+
     for(let task of this.allTasks)
     {
       if(task.department_id==department.id){
