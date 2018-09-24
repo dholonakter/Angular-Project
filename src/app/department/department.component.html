@@ -10,17 +10,27 @@
                     <label for="department name">Name</label>
                       <input type="text" 
                        id="name"
+                       name="depName"
                         class="form-control"
+                        [(ngModel)]="selectedDepName"
                         #name1>    
                    </form>
                    <form>
                       <label for="department building">Building</label>
                         <input type="text" 
                          id="building"
+                         name="depBuilding"
+                         [(ngModel)]="selectedDepBuilding"
                           class="form-control"
                           #building1>    
                      </form>
-                   <button type="button" class="btn btn-success add " (click)="addDepartment(name1)">+ Add New</button>
+                     <div *ngIf="selectedDepartment;else addButton">
+                      <button type="button" class="btn btn-success" (click)="updateDepartment(name1,building1)">Update</button>
+                      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+                    </div>
+                    <ng-template #addButton>
+                      <button type="button" class="btn btn-success" (click)="addNewDepartment(name1,building1)">+ Add New</button>
+                    </ng-template>
                   </div>
           </div>
             <div class="row">
@@ -28,18 +38,21 @@
                     <table class="table">
                         <thead>
                           <tr>
-                              <th scope="col">#</th>
+  
                             <th scope="col">Department ID</th>
                             <th scope="col">Department Name</th>
+                            <th scope="col">Department Building</th>
                           </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let dep of departments; let i = index"
                             (click)="Onselect(dep)"
                             [class.active]="dep === selectedDepartment"> <!--*ngfor loop through departments array and dispaly all properties value and i creates a template local variable to get the index of the array -->
-                                <th scope="row">{{i+1}}</th> 
+            
                                 <td>{{dep.id}}</td>
                                 <td>{{ dep.name }}</td>
+                                <td>{{ dep.building }}</td>
+
                                 <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
                                 <button type="button" class="btn btn-danger"(click)="onDelete(i)">Delete</button>
                               </tr>
