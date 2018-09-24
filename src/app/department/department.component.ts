@@ -25,15 +25,7 @@ kindofsumbmit:string="save";
 selectedDepartment:Department;
 
 constructor(private employeeService: EmployeeService,private departmentService: DepartmentService) {
-  //adding default department data
-  /*
-  this.departments.push(new Department(10,"Administration",""));
-  this.departments.push(new Department(20,"IT",""));
-  this.departments.push(new Department(65, "Software Engineering",""));
-  this.departments.push(new Department(66, "Human Resources",""));
-  this.departments.push(new Department(67, "Student Administration",""));
-  this.departments.push(new Department(68, "ICT & Support",""));
-  */
+
   this.getDepartments();
   this.getEmployees();
 }
