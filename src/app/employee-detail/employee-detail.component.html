@@ -10,41 +10,22 @@
 <br>
 
 <div id="employeeCRUD">
-  
-  <div class="otherInput">
-    <label for="fName">First Name:</label>
-    <input *ngIf="employee; else freshFirstNameInput" [(ngModel)]="employee.first_name" id="fName" placeholder="first name">
+
+  <div class="row employeeInput">
+    <div class="col">
+      <input *ngIf="employee" [(ngModel)]="employee.first_name" type="text" class="form-control" id="fName" placeholder="First name"/>
+    </div>
+    <div class="col">
+      <input *ngIf="employee" [(ngModel)]="employee.last_name" type="text" class="form-control" id="lName" placeholder="Last name"/>
+    </div>
   </div>
 
-  <ng-template #freshFirstNameInput>
-      <input id="fName" placeholder="first name">
-  </ng-template>
-  
-  <div class="otherInput">
-    <label for="lName">Last Name:</label>
-    <input *ngIf="employee; else freshLastNameInput" [(ngModel)]="employee.last_name" id="lName" placeholder="last name">
+  <div class="row employeeInput">
+      <input *ngIf="employee" [(ngModel)]="employee.birth_date" type="date" class="form-control" id="dob" value="2000-0"/>
   </div>
 
-  <ng-template #freshLastNameInput>
-    <input id="lName" placeholder="last name">
-  </ng-template>
-  
-  <div class="otherInput">
-    <label for="dob">Date of birth:</label>
-    <input *ngIf="employee; else freshDobInput" [(ngModel)]="employee.birth_date" id="dob" placeholder="2000-01-01">
+  <div class="row employeeInput">
+      <input *ngIf="employee" [(ngModel)]="employee.department_id" type="text" class="form-control" id="deptId" placeholder="20"/>
   </div>
-
-  <ng-template #freshDobInput>
-    <input id="dob" placeholder="2000-01-01">
-  </ng-template>
-
-  <div class="otherInput">
-    <label for="deptId">Department id:</label>
-    <input *ngIf="employee; else fresDeptIdInput" [(ngModel)]="employee.department_id" id="deptId" placeholder="20">
-  </div>
-
-  <ng-template #fresDeptIdInput>
-    <input id="deptId" placeholder="20">
-  </ng-template>
 
 </div>
