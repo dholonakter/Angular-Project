@@ -14,6 +14,7 @@ import { EmployeeDetailComponent } from './employee-detail/employee-detail.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
+import { EmployeeFilterPipe } from './employee-filter.pipe';
 
 
 @NgModule({
@@ -25,13 +26,15 @@ import { DepartmentDetailComponent } from './department/department-detail/depart
     DepartmentComponent,
     EmployeeDetailComponent,
     TasksDetailComponent,
-    DepartmentDetailComponent
+    DepartmentDetailComponent,
+    EmployeeFilterPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgbModule.forRoot()
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

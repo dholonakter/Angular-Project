@@ -3,9 +3,11 @@
     Enlisted Employees:
   </h2>
 </div>
+
 <div style="margin-left: 20px;">
+  <input id="employeeSearchBar" type="text" [(ngModel)]="term"/>
   <ul>
-    <li class="content-box1" *ngFor="let employee of employees"
+    <li class="content-box1" *ngFor="let employee of employees | employeeFilter: term"
     [class.selected]="employee === selectedEmployee"
         (click)="onSelect(employee)">
         {{ employee.first_name }}, {{ employee.last_name }}

@@ -19,10 +19,10 @@ departments:Department[]=[];
 employees:Employee[]=[];
 
 selectedrow:number;
-depmodel: Department;
-showNew:boolean=false;
-kindofsumbmit:string="save";
+
 selectedDepartment:Department;
+selectedDepName:string;
+selectedDepBuilding:string;
 
 constructor(private employeeService: EmployeeService,private departmentService: DepartmentService) {
 
@@ -75,45 +75,44 @@ Onselect(department:Department):void{
 //
 
 //adding the value to the department...
-addNewDepartment(name: HTMLInputElement)
+addNewDepartment(name1: HTMLInputElement,building1:HTMLInputElement)
     {
-      console.log(name.value);
-
-       //let temp:Department=new Department(this.departments.length+1,name.value,building.value);
-       //this.departments.push(temp); 
+       console.log(name1.value+building1.value);
+       let temp:Department=new Department(this.departments.length+1,name1.value,building1.value);
+       this.departments.push(temp); 
 
     }
 
-Onsave(){
-  if (this.kindofsumbmit==="save") 
-  {
-    // Push department model object into department list.
-    this.departments.push(this.depmodel);
     
+    updateDepartment(name1: HTMLInputElement,building1:HTMLInputElement)
+    {
+      if(this.selectedDepartment!=null){
+        //removing old ones
+        const index=this.departments.indexOf(this.selectedDepartment,0);
+        if(index>-1){
+          let depNumber:number=this.selectedDepartment.id;
+
+          this.departments.splice(index,1);
+          //adding updated one
+          let temp:Department=new Department(depNumber,name1.value,building1.value);
+          this.departments.push(temp);
+          this.selectedDepartment=null;
+          this.selectedDepName="";
+          this.selectedDepBuilding="";
+        }
+       
+      }
+
     }
-     else 
-     //update the existing property values based on model
-     {
-      this.departments[this.selectedrow].id = this.depmodel.id;
-      this.departments[this.selectedrow].name = this.depmodel.name; 
-     }
-     //hide department entry section
-     this.showNew=false;
-    
-}
 // This method associate to Edit Button.
 onEdit(index: number) 
 {
 // Assign selected table row index.
 this.selectedrow = index;
 // Initiate new department.
-this.depmodel = new Department();
-// Retrieve selected department from list and assign to model.
-this.depmodel = Object.assign({}, this.departments[this.selectedrow]);//intersting one
-// Change submitype to Update.
-this.kindofsumbmit = 'Update';
-// Display department entry section.
-this.showNew = true;
+this.selectedDepartment =this.departments[this.selectedrow];
+this.selectedDepName=this.selectedDepartment.name;
+this.selectedDepBuilding=this.selectedDepartment.building;
 }
 //
 onDelete(index: number) {
@@ -122,7 +121,7 @@ onDelete(index: number) {
 } 
 onCancel() {
   // Hide department entry section....
-  this.showNew = false;
+  this.selectedDepartment=null;
 }
 
 departmentName(department_id: number): string
