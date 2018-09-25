@@ -14,6 +14,15 @@
 
 input {
     margin-left: 5px;
+    margin-bottom: 5px;
     width: 200px;
     padding-left: 2px;
+}
+
+.employeeInput {
+    margin-left: -5px;
+}
+
+h3 {
+    margin-top: 10px;
 }

@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { TasksComponent } from './tasks/tasks.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
@@ -16,6 +16,8 @@ import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { EmployeeFilterPipe } from './employee-filter.pipe';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatListModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,10 @@ import { EmployeeFilterPipe } from './employee-filter.pipe';
     HttpClientModule,
     FormsModule,
     NgbModule,
-    NgbModule.forRoot()
+    BrowserAnimationsModule,
+    MatListModule,
+    MatButtonModule, 
+    MatCheckboxModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

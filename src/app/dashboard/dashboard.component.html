@@ -5,8 +5,6 @@
     <div (click)="onSelectMenu('Departments')">Departments</div>
 </div>
 
-<h2>{{selectedMenu}}:</h2>
-
 <div *ngIf="this.selectedMenu === 'Employees'"><app-employees ></app-employees></div>
 <div *ngIf="this.selectedMenu === 'Tasks'"><app-tasks ></app-tasks></div>
 <div *ngIf="this.selectedMenu === 'Departments'"><app-department ></app-department></div> 
