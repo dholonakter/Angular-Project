@@ -18,6 +18,7 @@ import { EmployeeFilterPipe } from './employee-filter.pipe';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatListModule } from '@angular/material';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { MatButtonModule, MatCheckboxModule, MatListModule } from '@angular/mate
     BrowserAnimationsModule,
     MatListModule,
     MatButtonModule, 
-    MatCheckboxModule
+    MatCheckboxModule, AppRoutingModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
