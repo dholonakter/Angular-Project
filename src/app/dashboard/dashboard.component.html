@@ -11,24 +11,66 @@
 <div *ngIf="this.selectedMenu === 'Tasks'"><app-tasks ></app-tasks></div>
 <div *ngIf="this.selectedMenu === 'Departments'"><app-department ></app-department></div> 
 
+<div class="container-fluid" *ngIf="this.selectedMenu === 'Dashboard'">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Dashboard
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              Tasks
+            </div>
+            <div class="panel-body">
+              <ngb-accordion  #acc="ngbAccordion" [closeOthers]="true" activeIds="">
+                <ngb-panel  *ngFor="let task1 of allTasks" (click)="onSelectTask(task1)" [class.selected]="task1 === selectedTask"> 
+                  <ng-template ngbPanelTitle>
+                    Task: {{task1.id}}
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <b>ID:</b> {{ task1.id }}<br> 
+                    <b>Department ID:</b> {{task1.department_id}}<br> 
+                    <b>Name:</b> {{task1.name}}<br> 
+                    <b>Employees:</b> {{task1.employees}}<br> 
+                    <b>Date:</b> {{task1.due_date}}<br>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              Employees
+            </div>
+            <div class="panel-body">
+              Employees here!
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              Departments
+            </div>
+            <div class="panel-body">
+              Departments here!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="main-box" *ngIf="this.selectedMenu === 'Dashboard'">
   
-  <div class="tasks-box">
-    <h3 class="boxHeader">Tasks</h3>
-    <ul>
-      <li  *ngFor="let task1 of allTasks" (click)="onSelectTask(task1)" [class.selected]="task1 === selectedTask">         
-        <b>Name:</b> {{task1.name}}<br>         
-        <b>Date:</b> {{task1.due_date}}<br> 
-      </li>
-    </ul>
-    <div *ngIf="selectedTask" class="hoi">
-      <b>ID:</b> {{ selectedTask.id }}<br> 
-      <b>Department ID:</b> {{selectedTask.department_id}}<br> 
-      <b>Name:</b> {{selectedTask.name}}<br> 
-      <b>Employees:</b> {{selectedTask.employees}}<br> 
-      <b>Date:</b> {{selectedTask.due_date}}<br> 
-    </div>    
-  </div>
+  
+  
 
   <div class="tasks-box">
     <h3 class="boxHeader">Employees</h3>

@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { EmployeeFilterPipe } from './employee-filter.pipe';
+import { TasksFilterPipe } from './tasks-filter.pipe';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { EmployeeFilterPipe } from './employee-filter.pipe';
     EmployeeDetailComponent,
     TasksDetailComponent,
     DepartmentDetailComponent,
-    EmployeeFilterPipe
+    EmployeeFilterPipe,
+    TasksFilterPipe
   ],
   imports: [
     BrowserModule,

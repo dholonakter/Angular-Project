@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../model/task';
 import { TasksService } from '../tasks.service';
+import { TasksFilterPipe } from '../tasks-filter.pipe';
+
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+  styleUrls: ['./tasks.component.css'],
+  
+  
 })
 export class TasksComponent implements OnInit {
 selectedTask: Task;
 selectedTaskSave: Task;
 IsNewTask: boolean = false;
+SearchValue: string;
   
    allTasks = [];
 
@@ -27,6 +32,18 @@ IsNewTask: boolean = false;
     .subscribe(data => this.allTasks = data);
   }
 
+  SearchClick(){
+    console.log("you clicked search:" + this.SearchValue);
+    let alltasks2:Task[] = []; 
+    this.getAllTasks();
+    for (let task of this.allTasks){
+      if(task.name == this.SearchValue){
+        this.deleteTask(task);
+        console.log("task deleted: " + task.id);
+      }
+    };
+    console.log("search finished");
+  }
   onSelect(task: Task): void{
     if(this.selectedTask != null){
       this.cancelClick();
@@ -67,11 +84,15 @@ IsNewTask: boolean = false;
     this.setDefaultValues();
   }
   deleteClick(): void{
-    let index: number = this.allTasks.indexOf(this.selectedTask, 0);
+    this.deleteTask(this.selectedTask);
+      this.setDefaultValues();
+  }
+  deleteTask(task: Task){
+    let index: number = this.allTasks.indexOf(task, 0);
       if(index > -1){
         this.allTasks.splice(index, 1);
+        console.log("task deleted2: " + task.id)
       }
-      this.setDefaultValues();
   }
   setDefaultValues(): void{
     this.selectedTask = null;
