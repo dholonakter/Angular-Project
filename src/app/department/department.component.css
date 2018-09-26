@@ -52,11 +52,20 @@
   }
   .add{
     float: left;
+
+  }
+  .delete{
+    float: left;
   }
   .inputarea{
     clear: left;
     margin-left: 90px;
     margin-top: 30px;;
   }
+  .table tr.active td {
+    background-color:#123456 !important;
+    color: white;
+  }
   
+
   
