@@ -1,24 +1,34 @@
-<div style="margin-left: 20px;">
-  <h2>
-    Enlisted Employees:
-  </h2>
-</div>
-
-<div style="margin-left: 20px;">
-  <input id="employeeSearchBar" type="text" [(ngModel)]="term"/>
-  <ul>
-    <li class="content-box1" *ngFor="let employee of employees | employeeFilter: term"
-    [class.selected]="employee === selectedEmployee"
-        (click)="onSelect(employee)">
-        {{ employee.first_name }}, {{ employee.last_name }}
-    </li>
-  </ul>
-  <app-employee-detail [employee]="selectedEmployee"></app-employee-detail>
-  <div>
-    <button class="crudButton" (click)="createEmployee()">New Employee</button>
-    <button class="crudButton" (click)="changeEmployeeDetails()">Update Changes</button>
-    <button class="crudButton" (click)="cancelChanges()">Cancel Changes</button>
-    <button class="crudButton" (click)="deleteSelectedEmployee();">Delete Selected</button>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Enlisted Employees:
+    </div>
+    <div style="margin-left: 20px;">
+      <input id="employeeSearchBar" class="form-control" type="text" [(ngModel)]="term" placeholder="Search Employee..."/>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees | employeeFilter: term"
+          [class.selected]="employee === selectedEmployee"
+              (click)="onSelect(employee)">
+            <td>{{ employee.id }}</td>
+            <td class="employeeNameTd">{{ employee.first_name }} {{ employee.last_name }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-employee-detail [employee]="selectedEmployee"></app-employee-detail>
+      <div style="margin-bottom: 5px;">
+        <button class="btn btn-success add" (click)="createEmployee()">New Employee</button>
+        <button class="btn btn-info" (click)="changeEmployeeDetails()">Update Employee</button>
+        <button class="btn btn-warning" (click)="cancelChanges()">Cancel Changes</button>
+        <button class="btn btn-danger" (click)="deleteSelectedEmployee();">Delete Selected</button>
+      </div>
+    </div>
   </div>
 </div>
 <br>
