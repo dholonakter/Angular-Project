@@ -1,14 +1,3 @@
-<div class="navbar">
-    <div (click)="onSelectMenu('Dashboard')">Dashboard</div>
-    <div (click)="onSelectMenu('Tasks')">Tasks</div>
-    <div (click)="onSelectMenu('Employees')">Employees</div>
-    <div (click)="onSelectMenu('Departments')">Departments</div>
-</div>
-
-<div *ngIf="this.selectedMenu === 'Employees'"><app-employees ></app-employees></div>
-<div *ngIf="this.selectedMenu === 'Tasks'"><app-tasks ></app-tasks></div>
-<div *ngIf="this.selectedMenu === 'Departments'"><app-department ></app-department></div> 
-
 <div class="container-fluid" *ngIf="this.selectedMenu === 'Dashboard'">
   <div class="panel panel-primary">
     <div class="panel-heading">
