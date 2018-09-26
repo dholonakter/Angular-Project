@@ -15,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TasksDetailComponent } from './tasks-detail/tasks-detail.component';
 import { DepartmentDetailComponent } from './department/department-detail/department-detail.component';
 import { EmployeeFilterPipe } from './employee-filter.pipe';
+import { TasksFilterPipe } from './tasks-filter.pipe';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatListModule } from '@angular/material';
@@ -30,7 +31,8 @@ import { AppRoutingModule } from './/app-routing.module';
     EmployeeDetailComponent,
     TasksDetailComponent,
     DepartmentDetailComponent,
-    EmployeeFilterPipe
+    EmployeeFilterPipe,
+    TasksFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -9,13 +9,12 @@
     cursor: pointer;  
 }
 
-.main-box div{
-    border: 3px grey solid;
-    border-radius: 5%;
+.main-box div {
     float: left;
     width: 25%;
     margin-left: 5%;
 }
+
 .tasks-box li{
     display: block;
     border: 3px red solid;
@@ -38,10 +37,34 @@
     width: 96%;
     margin-bottom: 5px;
 }
-.hoi{
-    
+::ng-deep .card {   
+    background-color: rgb(235, 235, 235);    
+    border: 3px black solid;
+    border-radius: 5%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
 }
+::ng-deep .card-body {       
+    background-color: white;
+    padding-left: 5%;
+    border-top: 2px;
+    border-top-style: solid;
+    border-top-color: grey;
+}
+::ng-deep .btn.btn-link {          
+    padding-right: 50%;
+    outline: none;
+    text-decoration: none;
 
+}
+::ng-deep .btn.btn-link {          
+    padding-right: 50%;
+    outline: none;
+    text-decoration: none;
+}
 .boxHeader {
     text-align: center;
 }
