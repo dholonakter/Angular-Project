@@ -34,17 +34,53 @@
               Employees
             </div>
             <div class="panel-body">
-              Employees here!
+                <ngb-accordion  #acc="ngbAccordion" [closeOthers]="true" activeIds="">
+                    <ngb-panel  *ngFor="let employee of employees" (click)="onSelectEmployee(task1)" [class.selected]="employee === selectedEmployee"> 
+                      <ng-template ngbPanelTitle>
+                        Employee: {{employee.id}}
+                      </ng-template>
+                      <ng-template ngbPanelContent>
+                          <b>ID:</b> {{ employee.id }}<br> 
+                          <b>Name:</b> {{ employee.first_name }} {{ employee.last_name }}<br> 
+                          <b>Date of birth:</b> {{ employee.birth_date }}<br> 
+                          <b>Works at department:</b> {{ dept.departmentName(employee.department_id) }}<br> 
+                     
+                      </ng-template>
+                    </ngb-panel>
+                  </ngb-accordion>
+
             </div>
           </div>
         </div>
+        
         <div class="col-sm-4">
           <div class="panel panel-primary">
             <div class="panel-heading">
               Departments
             </div>
             <div class="panel-body">
-              Departments here!
+              <ngb-accordion  #acc="ngbAccordion" [closeOthers]="true" activeIds="">
+                <ngb-panel  *ngFor="let department of departments" (click)="onSelectDepartment(department)" [class.selected]="department === selectedDepartment"> 
+                  <ng-template ngbPanelTitle>
+                    Department: {{department.id}}
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                      <b>ID:</b> {{ department.id }}<br>         
+                      <b>Name:</b> {{ department.name }}<br>
+                      <p>Employees working in this department:</p> 
+                          <ul *ngFor="let emp of SelectedDepartmentEmployees" >
+                               
+                           <li>{{ emp.first_name }} {{ emp.last_name }}</li>
+                          </ul>
+                       <p>Task of this department :</p>
+                       
+                      <ul *ngFor="let task of SelectedDepartmentTasks">
+                         <li>{{ task.name }}</li>
+                         </ul>
+                  </ng-template>
+
+                </ngb-panel>
+              </ngb-accordion>
             </div>
           </div>
         </div>
@@ -52,46 +88,3 @@
     </div>
   </div>
 </div>
-
-
-<div class="main-box" *ngIf="this.selectedMenu === 'Dashboard'">
-  
-  
-  
-
-  <div class="tasks-box">
-    <h3 class="boxHeader">Employees</h3>
-    <ul>
-      <li *ngFor="let employee of employees" (click)="onSelectEmployee(employee)" [class.selected]="employee === selectedEmployee">         
-        <b>ID:</b> {{ employee.id }}<br>         
-        <b>Name:</b> {{ employee.first_name }} {{ employee.last_name }}<br> 
-      </li>
-    </ul>
-    <div *ngIf="selectedEmployee">
-      <b>ID:</b> {{ selectedEmployee.id }}<br> 
-      <b>Name:</b> {{ selectedEmployee.first_name }} {{ selectedEmployee.last_name }}<br> 
-      <b>Date of birth:</b> {{ selectedEmployee.birth_date }}<br> 
-      <b>Works at department:</b> {{ dept.departmentName(selectedEmployee.department_id) }}<br> 
-    </div>    
-  </div>
-
-  <div class="tasks-box">
-    <h3 class="boxHeader">Departments</h3>
-    <ul>
-      <li *ngFor="let department of departments" (click)="onSelectDepartment(department)" [class.selected]="department === selectedDepartment">         
-        <b>ID:</b> {{ department.id }}<br>         
-        <b>Name:</b> {{ department.name }}<br> 
-      </li>
-    </ul>
-    <div *ngIf="selectedDepartment">
-        <p>Selected Department: {{selectedDepartment.name}}</p>
-        <p>Employees wroking in this departments</p>
-        <ul *ngFor="let emp of SelectedDepartmentEmployees">
-          <li>{{ emp.first_name }} {{ emp.last_name }}</li>
-        </ul>
-        <p>Task for this department</p>
-        <ul *ngFor="let task of SelectedDepartmentTasks">
-            <li>{{ task.name }}</li>
-          </ul>
-    </div>
-  </div>
