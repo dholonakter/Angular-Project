@@ -4,41 +4,12 @@
           Department
          </div>
         <div class="panel-body">
-          <div class="row">
-              <div class="col-sm-5 form-group">
-                  <form>
-                    <label for="department name">Name</label>
-                      <input type="text" 
-                       id="name"
-                       name="depName"
-                        class="form-control"
-                        [(ngModel)]="selectedDepName"
-                        #name1>    
-                   </form>
-                   <form>
-                      <label for="department building">Building</label>
-                        <input type="text" 
-                         id="building"
-                         name="depBuilding"
-                         [(ngModel)]="selectedDepBuilding"
-                          class="form-control"
-                          #building1>    
-                     </form>
-                     <div *ngIf="selectedDepartment;else addButton">
-                      <button type="button" class="btn btn-success" (click)="updateDepartment(name1,building1)">Update</button>
-                      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-                    </div>
-                    <ng-template #addButton>
-                      <button type="button" class="btn btn-success" (click)="addNewDepartment(name1,building1)">+ Add New</button>
-                    </ng-template>
-                  </div>
-          </div>
+          <input type="searchtext" class="form-control"  placeholder="Search department" [(ngModel)]="searchterm"/>
             <div class="row">
                 <div class="col-xs-12">
                     <table class="table">
                         <thead>
                           <tr>
-  
                             <th scope="col">Department ID</th>
                             <th scope="col">Department Name</th>
                             <th scope="col">Department Building</th>
@@ -52,15 +23,45 @@
                                 <td>{{dep.id}}</td>
                                 <td>{{ dep.name }}</td>
                                 <td>{{ dep.building }}</td>
-
                                 <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
-                                <button type="button" class="btn btn-danger"(click)="onDelete(i)">Delete</button>
-                              </tr>
+                          <button type="button" class="btn btn-danger"(click)="onDelete(i)">Delete</button>
+                       </tr>
                         </tbody>
                       </table>
                 </div>
               </div>
               <app-department-detail [departmentDetail]="selectedDepartment"></app-department-detail>
+              <div class="row">
+                  <div class="col-sm-5 form-group">
+                      <form>
+                        <label for="department name">Name</label>
+                          <input type="text" 
+                           id="name"
+                           name="depName"
+                            class="form-control"
+                            [(ngModel)]="selectedDepName"
+                            #name1>    
+                       </form>
+                       <form>
+                          <label for="department building">Building</label>
+                            <input type="text" 
+                             id="building"
+                             name="depBuilding"
+                             [(ngModel)]="selectedDepBuilding"
+                              class="form-control"
+                              #building1>    
+                         </form>
+                         <div *ngIf="selectedDepartment;else addButton">
+                          <button type="button" class="btn btn-success" (click)="updateDepartment(name1,building1)">Update</button>
+                          <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+                        </div>
+                        <ng-template #addButton>
+                          <button type="button" class="btn btn-success" (click)="addNewDepartment(name1,building1)">+ Add New</button>
+                          
+                        </ng-template>
+                      </div>
+
+              </div>
 
           </div>
           

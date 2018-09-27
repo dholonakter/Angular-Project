@@ -66,6 +66,10 @@
     background-color:#123456 !important;
     color: white;
   }
-  
-
+   input[type=searchtext] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    width: 25%;
+  }
   
