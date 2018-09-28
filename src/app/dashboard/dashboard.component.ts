@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   employees: Employee[];
 
   selectedDepartment:Department;
-  SelectedDepartmentEmployees:Employee[]=[];
+  selectedDepartmentEmployees:Employee[]=[];
   SelectedDepartmentTasks:Task[]=[];
   departments:Department[];
 
@@ -58,23 +58,25 @@ export class DashboardComponent implements OnInit {
   onSelectEmployee(emp: Employee)
   {
     this.selectedEmployee = emp;
+    console.log("On Select employee");
   }
 
 
   onSelectDepartment(dep: Department)
   {
+
     this.selectedDepartment = dep;
     this.getEmployeesOfSelectedDepartment(this.selectedDepartment);
     this.getTasksOfSelectedDepartment(this.selectedDepartment);
   }
 
-  getEmployeesOfSelectedDepartment(department:Department){
+  getEmployeesOfSelectedDepartment(department:Department):void{
     if(department!=null){
-      this.SelectedDepartmentEmployees = [];//assign the empty list to avoid to add the new elemeents
+      this.selectedDepartmentEmployees = [];//assign the empty list to avoid to add the new elemeents
     for(let emp of this.employees)
     {
       if(emp.department_id==department.id){
-        this.SelectedDepartmentEmployees.push(emp);
+        this.selectedDepartmentEmployees.push(emp);
       }
     }
     }
@@ -92,6 +94,37 @@ export class DashboardComponent implements OnInit {
       }
     }
     }
+  }
+
+  getEmployeesFromDepartmentId(departmentId:Number):Employee[]{
+    this.selectedDepartmentEmployees = [];
+    if(departmentId>0){
+  //assign the empty list to avoid to add the new elemeents
+    for(let emp of this.employees)
+    {
+      if(emp.department_id==departmentId){
+        this.selectedDepartmentEmployees.push(emp);
+      }
+    }
+    }
+    return this.selectedDepartmentEmployees;
+  }
+
+  getTasksFromDepartmentId(departmentId:Number):Task[]{
+    this.SelectedDepartmentTasks = [];
+
+    if(departmentId>0){
+
+
+    for(let task of this.allTasks)
+    {
+      if(task.department_id==departmentId){
+        this.SelectedDepartmentTasks.push(task);
+      }
+    }
+    }
+    return this.SelectedDepartmentTasks;
+    
   }
 
   getAllDepartments():void{

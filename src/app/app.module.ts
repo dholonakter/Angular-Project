@@ -20,6 +20,7 @@ import { TasksFilterPipe } from './tasks-filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatListModule } from '@angular/material';
 import { AppRoutingModule } from './/app-routing.module';
+import { DepartmentfilterPipe } from './departmentfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { AppRoutingModule } from './/app-routing.module';
     TasksDetailComponent,
     DepartmentDetailComponent,
     EmployeeFilterPipe,
-    TasksFilterPipe
+    TasksFilterPipe,
+    DepartmentfilterPipe,
+
   ],
   imports: [
     BrowserModule,

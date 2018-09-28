@@ -4,7 +4,7 @@
           Department
          </div>
         <div class="panel-body">
-          <input type="searchtext" class="form-control"  placeholder="Search department" [(ngModel)]="searchterm"/>
+          <input type="searchtext" class="form-control"  placeholder="Search departmentName" [(ngModel)]="searchterm"/>
             <div class="row">
                 <div class="col-xs-12">
                     <table class="table">
@@ -16,7 +16,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let dep of departments; let i = index"
+                            <tr *ngFor="let dep of departments | departmentfilter:searchterm ;let i=index"
                             (click)="Onselect(dep)"
                             [class.active]="dep === selectedDepartment"> <!--*ngfor loop through departments array and dispaly all properties value and i creates a template local variable to get the index of the array -->
             
@@ -24,7 +24,7 @@
                                 <td>{{ dep.name }}</td>
                                 <td>{{ dep.building }}</td>
                                 <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
-                          <button type="button" class="btn btn-danger"(click)="onDelete(i)">Delete</button>
+                               <button type="button" class="btn btn-danger"(click)="onDelete(i)">Delete</button>
                        </tr>
                         </tbody>
                       </table>

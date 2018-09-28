@@ -5,7 +5,6 @@ import { EmployeeService } from '../employee.service';
 import { DepartmentService } from '../service/department/department.service';
 import { Observable } from 'rxjs';
 import { Employee } from '../employee';
-
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',
@@ -23,6 +22,7 @@ selectedrow:number;
 selectedDepartment:Department;
 selectedDepName:string;
 selectedDepBuilding:string;
+searchterm:string;
 
 constructor(private employeeService: EmployeeService,private departmentService: DepartmentService) {
 
@@ -80,6 +80,8 @@ addNewDepartment(name1: HTMLInputElement,building1:HTMLInputElement)
        console.log(name1.value+building1.value);
        let temp:Department=new Department(this.departments.length+1,name1.value,building1.value);
        this.departments.push(temp); 
+        name1.value="";
+        building1.value="";
 
     }
 

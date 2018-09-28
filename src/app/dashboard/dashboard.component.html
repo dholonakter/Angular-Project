@@ -42,7 +42,7 @@
                       <ng-template ngbPanelContent>
                           <b>ID:</b> {{ employee.id }}<br> 
                           <b>Name:</b> {{ employee.first_name }} {{ employee.last_name }}<br> 
-                          <b>Date of birth:</b> {{ employee.birth_date }}<br> 
+                          <b>Date of birth:</b> {{ employee .birth_date }}<br> 
                           <b>Works at department:</b> {{ dept.departmentName(employee.department_id) }}<br> 
                      
                       </ng-template>
@@ -60,7 +60,7 @@
             </div>
             <div class="panel-body">
               <ngb-accordion  #acc="ngbAccordion" [closeOthers]="true" activeIds="">
-                <ngb-panel  *ngFor="let department of departments" (click)="onSelectDepartment(department)" [class.selected]="department === selectedDepartment"> 
+                <ngb-panel  *ngFor="let department of departments" [class.selected]="department === selectedDepartment"> 
                   <ng-template ngbPanelTitle>
                     Department: {{department.id}}
                   </ng-template>
@@ -68,13 +68,13 @@
                       <b>ID:</b> {{ department.id }}<br>         
                       <b>Name:</b> {{ department.name }}<br>
                       <p>Employees working in this department:</p> 
-                          <ul *ngFor="let emp of SelectedDepartmentEmployees" >
+                          <ul *ngFor="let emp of getEmployeesFromDepartmentId(department.id)" >
                                
                            <li>{{ emp.first_name }} {{ emp.last_name }}</li>
                           </ul>
                        <p>Task of this department :</p>
                        
-                      <ul *ngFor="let task of SelectedDepartmentTasks">
+                      <ul *ngFor="let task of getTasksFromDepartmentId(department.id)">
                          <li>{{ task.name }}</li>
                          </ul>
                   </ng-template>
