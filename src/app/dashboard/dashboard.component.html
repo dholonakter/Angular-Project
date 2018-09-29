@@ -11,8 +11,9 @@
               Tasks
             </div>
             <div class="panel-body">
+            <input type="text" class="form-control" [(ngModel)]="SearchValue" placeholder="Task's Name">   
               <ngb-accordion  #acc="ngbAccordion" [closeOthers]="true" activeIds="">
-                <ngb-panel  *ngFor="let task1 of allTasks" (click)="onSelectTask(task1)" [class.selected]="task1 === selectedTask"> 
+                <ngb-panel  *ngFor="let task1 of allTasks | tasksFilter: this.SearchValue" (click)="onSelectTask(task1)" [class.selected]="task1 === selectedTask"> 
                   <ng-template ngbPanelTitle>
                     Task: {{task1.id}}
                   </ng-template>
@@ -34,8 +35,9 @@
               Employees
             </div>
             <div class="panel-body">
+                <input id="employeeSearchBar" class="form-control" type="text" [(ngModel)]="term" placeholder="Search Employee..."/>
                 <ngb-accordion  #acc="ngbAccordion" [closeOthers]="true" activeIds="">
-                    <ngb-panel  *ngFor="let employee of employees" (click)="onSelectEmployee(task1)" [class.selected]="employee === selectedEmployee"> 
+                    <ngb-panel  *ngFor="let employee of employees | employeeFilter: term" (click)="onSelectEmployee(task1)" [class.selected]="employee === selectedEmployee"> 
                       <ng-template ngbPanelTitle>
                         Employee: {{employee.id}}
                       </ng-template>
@@ -59,8 +61,9 @@
               Departments
             </div>
             <div class="panel-body">
+                <input type="searchtext" class="form-control"  placeholder="Search departmentName" [(ngModel)]="searchterm"/>
               <ngb-accordion  #acc="ngbAccordion" [closeOthers]="true" activeIds="">
-                <ngb-panel  *ngFor="let department of departments" [class.selected]="department === selectedDepartment"> 
+                <ngb-panel  *ngFor="let department of departments | departmentfilter:searchterm" [class.selected]="department === selectedDepartment"> 
                   <ng-template ngbPanelTitle>
                     Department: {{department.id}}
                   </ng-template>

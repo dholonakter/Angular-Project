@@ -5,8 +5,9 @@
       </div>
       <div class="panel-body">
         <div class="row">
-            <label>Search: </label>
-            <input type="text" [(ngModel)]="this.SearchValue" placeholder="Task's Name">
+          <div class="col-sm-4">
+            <input type="text" class="form-control" [(ngModel)]="this.SearchValue" placeholder="Task's Name">
+          </div>
         </div>
         <div class="row">
           <table class="table">
@@ -20,7 +21,7 @@
             <tr *ngFor="let task1 of allTasks | tasksFilter: this.SearchValue" (click)="onSelect(task1)" [class.selected]="task1 === selectedTask">
               <td class="task-row">{{task1.id}}</td>
               <td class="task-row">{{task1.name}}</td>
-              <td class="task-row">{{task1.date}}</td>
+              <td class="task-row">{{task1.due_date}}</td>
             </tr>
           </table>
         </div>
