@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee';
+import { Employee, IEmployee } from '../employee';
 import { EmployeeService } from '../employee.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class EmployeesComponent implements OnInit {
   isCollapsed = true;
 
   employees = [];
+  sortSelection;
 
   selectedEmployee: Employee;
   copyOfSelected: Employee;
@@ -29,6 +30,79 @@ export class EmployeesComponent implements OnInit {
   getEmployees() : void
   {
     this.employeeService.getEmployees().subscribe(data => this.employees = data);
+  }
+
+  private sortAscOrDesc(ascendingFunction: () => void, descendingFunction: () => void): void
+  {
+    if (this.sortSelection == 0)
+    {
+      ascendingFunction();
+    }
+    else
+    {
+      descendingFunction();
+    }
+  }
+  sortById(): void
+  {
+
+  }
+
+  sortByName(): void 
+  {
+    this.sortAscOrDesc(this.sortByLastNameAsc, this.sortByLastNameDesc);
+  }
+
+  sortByLastNameAsc(): void
+  {
+    this.employees.sort((x: Employee, y: Employee) => {
+      if (x.last_name < y.last_name)
+      {
+        return -1;
+      }
+      if (x.last_name > y.last_name)
+      {
+        return 1;
+      }
+      else
+      {
+       if (x.first_name < y.first_name)
+       {
+         return -1;
+       }
+       if(x.first_name > y.first_name)
+       {
+         return 1;
+       }
+       return 0;
+      }
+    })
+  }
+
+  sortByLastNameDesc(): void
+  {
+    this.employees.sort((x: Employee, y: Employee) => {
+      if (x.last_name < y.last_name)
+      {
+        return 1;
+      }
+      if (x.last_name > y.last_name)
+      {
+        return -1;
+      }
+      else
+      {
+       if (x.first_name < y.first_name)
+       {
+         return 1;
+       }
+       if(x.first_name > y.first_name)
+       {
+         return -1;
+       }
+       return 0;
+      }
+    })
   }
 
   onSelect(employee: Employee)
