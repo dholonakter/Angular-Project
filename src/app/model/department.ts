@@ -2,32 +2,31 @@ import { Employee } from "../employee";
 
 export class Department {
  
-  /*
   id:number;
   name:string;
   building:string;
+  employees: Employee[];
 
-  */
   constructor(
-    public id: number=0,
-    public name: string = '',
-    public building: string = '',
-    public employees: Employee[]=[]
+     id: number,
+     name: string,
+     building: string,
+     employees: Employee[]
   ) 
   {
-
+    this.id = id;
+    this.name = name;
+    this.building = building;
+    this.employees = employees;
   }
-  
-  /*
+}
 
-  constructor(id: number, name: string, building: string) 
-  {
-      this.id=id;
-      this.name=name;
-      this.building=building
-  }
-*/
-
-  }
+//Here is your interface for Service - Bas
+export interface IDepartment{
+ id: number;
+ name: string;
+ building: string;
+ employees: Employee[];
+}
   
 

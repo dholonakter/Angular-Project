@@ -16,7 +16,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let dep of departments | departmentfilter:searchterm ;let i=index"
+                            <tr *ngFor="let dep of departmentService.allDepartments | departmentfilter:searchterm ;let i=index"
                             (click)="Onselect(dep)"
                             [class.active]="dep === selectedDepartment"> <!--*ngfor loop through departments array and dispaly all properties value and i creates a template local variable to get the index of the array -->
             

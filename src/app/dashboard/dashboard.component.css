@@ -1,3 +1,12 @@
+label {
+    width: 150px;
+}
+button {
+    margin-right: 5px;
+}
+.valueChange-box{
+    margin-left: 20px;
+}
 .navbar{
     background-color: lightblue;
     min-height: auto;

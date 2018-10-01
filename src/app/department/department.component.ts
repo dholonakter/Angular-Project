@@ -13,9 +13,9 @@ import { Employee } from '../employee';
 export class DepartmentComponent implements OnInit {
   /*here is list of departments*/
   
-departments:Department[]=[];
+//departments:Department[]=[];
 
-employees:Employee[]=[];
+//employees:Employee[]=[];
 
 selectedrow:number;
 
@@ -25,40 +25,41 @@ selectedDepBuilding:string;
 searchterm:string;
 
 constructor(private employeeService: EmployeeService,private departmentService: DepartmentService) {
-
-  this.getDepartments();
-  this.getEmployees();
+  this.departmentService.createAllDepartments();
+  //this.getDepartments();
+  this.employeeService.createAllEmployees();
+  //this.getEmployees();
 }
 
 addEmployeesToDepartment():void{
 
   var index:number=0;
-  for(index=0; index < this.departments.length;index++)
+  for(index=0; index < this.departmentService.allDepartments.length;index++)
   {
 
 
-    this.departments[index].employees=[];
+    this.departmentService.allDepartments[index].employees=[];
 
-    for(let emp of this.employees)
+    for(let emp of this.employeeService.allEmployees)
     {
-      if(emp.department_id==this.departments[index].id){
+      if(emp.department_id==this.departmentService.allDepartments[index].id){
         
-        this.departments[index].employees.push(emp);
+        this.departmentService.allDepartments[index].employees.push(emp);
       }
     }
    
   }
 }
-getDepartments(): void {
+/*getDepartments(): void {
   this.departmentService.getAllDepartments()
       .subscribe(dep => this.departments = dep);
-    }
+    }*/
 
-getEmployees(): void {
+/*getEmployees(): void {
   this.employeeService.getEmployees()
       .subscribe(emps => this.employees = emps
         );
-}
+}*/
 
 
 ngOnInit() {
@@ -78,8 +79,10 @@ Onselect(department:Department):void{
 addNewDepartment(name1: HTMLInputElement,building1:HTMLInputElement)
     {
        console.log(name1.value+building1.value);
-       let temp:Department=new Department(this.departments.length+1,name1.value,building1.value);
-       this.departments.push(temp); 
+       //PROBLEM: Employees has not been specified!!! - Bas
+       let temp:Department = new Department(this.departmentService.allDepartments.length+1, name1.value, building1.value, new Employee[0]);
+       //this.departmentService.allDepartments.push(temp); 
+       this.departmentService.add(temp);
         name1.value="";
         building1.value="";
 
@@ -90,14 +93,18 @@ addNewDepartment(name1: HTMLInputElement,building1:HTMLInputElement)
     {
       if(this.selectedDepartment!=null){
         //removing old ones
-        const index=this.departments.indexOf(this.selectedDepartment,0);
+        const index=this.departmentService.allDepartments.indexOf(this.selectedDepartment,0);
         if(index>-1){
           let depNumber:number=this.selectedDepartment.id;
 
-          this.departments.splice(index,1);
+          //this.departmentService.allDepartments.splice(index,1);
+          this.departmentService.remove(this.selectedDepartment);
           //adding updated one
-          let temp:Department=new Department(depNumber,name1.value,building1.value);
-          this.departments.push(temp);
+
+          //PROBLEM: Employees has not been specified!!! - Bas
+          let temp:Department=new Department(depNumber, name1.value, building1.value, new Employee[0]);
+          //this.departmentService.allDepartments.push(temp);
+          this.departmentService.add(temp);
           this.selectedDepartment=null;
           this.selectedDepName="";
           this.selectedDepBuilding="";
@@ -112,14 +119,15 @@ onEdit(index: number)
 // Assign selected table row index.
 this.selectedrow = index;
 // Initiate new department.
-this.selectedDepartment =this.departments[this.selectedrow];
+this.selectedDepartment =this.departmentService.allDepartments[this.selectedrow];
 this.selectedDepName=this.selectedDepartment.name;
 this.selectedDepBuilding=this.selectedDepartment.building;
 }
 //
 onDelete(index: number) {
   // Delete the corresponding department entry from the list.
-  this.departments.splice(index, 1);
+  //this.departmentService.allDepartments.splice(index, 1);
+  this.departmentService.remove(this.selectedDepartment);
 } 
 onCancel() {
   // Hide department entry section....
@@ -128,7 +136,7 @@ onCancel() {
 
 departmentName(department_id: number): string
 {
-  for (let department of this.departments)
+  for (let department of this.departmentService.allDepartments)
   {
     if (department_id == department.id)
     {

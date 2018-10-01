@@ -17,33 +17,21 @@ selectedTaskSave: Task;
 IsNewTask: boolean = false;
 SearchValue: string;
   
-   allTasks = [];
+   //allTasks = [];
 
   constructor(private taskService: TasksService) {
     
    }
 
   ngOnInit() {
-    this.getAllTasks();
+    this.taskService.createAllTask();
   }
  
-  getAllTasks(): void{
+  /*getAllTasks(): void{
     this.taskService.getAllTasks()
     .subscribe(data => this.allTasks = data);
-  }
+  }*/
 
-  SearchClick(){
-    console.log("you clicked search:" + this.SearchValue);
-    let alltasks2:Task[] = []; 
-    this.getAllTasks();
-    for (let task of this.allTasks){
-      if(task.name == this.SearchValue){
-        this.deleteTask(task);
-        console.log("task deleted: " + task.id);
-      }
-    };
-    console.log("search finished");
-  }
   onSelect(task: Task): void{
     if(this.selectedTask != null){
       this.cancelClick();
@@ -54,7 +42,8 @@ SearchValue: string;
   newTaskClick(): void{   
     if(this.selectedTask != undefined){this.saveClick();} 
     let temp: Task = new Task(this.getHighestID()+1, 0, "", [0], null);
-    this.allTasks.push(temp);
+    this.taskService.add(temp);
+    //this.allTasks.push(temp);
     this.selectedTask = temp;
     this.IsNewTask = true;   
   }
@@ -85,14 +74,15 @@ SearchValue: string;
   }
   deleteClick(): void{
     this.deleteTask(this.selectedTask);
-      this.setDefaultValues();
+    this.setDefaultValues();
   }
   deleteTask(task: Task){
-    let index: number = this.allTasks.indexOf(task, 0);
+    /*let index: number = this.allTasks.indexOf(task, 0);
       if(index > -1){
         this.allTasks.splice(index, 1);
         console.log("task deleted2: " + task.id)
-      }
+      }*/
+    this.taskService.remove(task);
   }
   setDefaultValues(): void{
     this.selectedTask = null;
@@ -101,14 +91,14 @@ SearchValue: string;
   }
   getHighestID(): number{
     let max = 0;
-    this.allTasks.forEach(task => {
+    this.taskService.allTasks.forEach(task => {
       if(task.id > max){max = task.id;}
     });
     return max;
   }
   getTaskByID(ID: number): Task{
     let temp: Task = null;
-    this.allTasks.forEach(task => {
+    this.taskService.allTasks.forEach(task => {
       if(task.id === ID && this.selectedTask !== task){console.log("Task found (by ID)!"); temp = task; return;}
     });
     if(temp == null){
