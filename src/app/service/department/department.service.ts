@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Department } from '../../model/department';
 import { HttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class DepartmentService {
 
   getAllDepartments(): Observable<Department[]>
   {
-    return this.http.get<Department[]>(this.url);
+    return this.http.get<Department[]>(this.url);//fetch data from server using http
   }
 
   constructor(private http: HttpClient) { }
