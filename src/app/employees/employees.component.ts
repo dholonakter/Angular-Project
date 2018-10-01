@@ -32,25 +32,58 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(data => this.employees = data);
   }
 
-  private sortAscOrDesc(ascendingFunction: () => void, descendingFunction: () => void): void
+  sortById(): void
   {
     if (this.sortSelection == 0)
     {
-      ascendingFunction();
+      this.sortByIdAsc();
     }
     else
     {
-      descendingFunction();
+      this.sortByIdDesc();
     }
   }
-  sortById(): void
-  {
 
+  sortByIdAsc(): void
+  {
+    this.employees.sort((x: Employee, y: Employee) => {
+    if (x.id < y.id)
+    {
+      return -1;
+    }
+    if (x.id > y.id)
+    {
+      return 1;
+    }
+    return 0;
+    }
+  }
+
+  sortByIdDesc(): void
+  {
+    this.employees.sort((x: Employee, y: Employee) => {
+    if (x.id < y.id)
+    {
+      return 1;
+    }
+    if (x.id > y.id)
+    {
+      return -1;
+    }
+    return 0;
+    }
   }
 
   sortByName(): void 
   {
-    this.sortAscOrDesc(this.sortByLastNameAsc, this.sortByLastNameDesc);
+    if (this.sortSelection == 0)
+    {
+      this.sortByLastNameAsc();
+    }
+    else
+    {
+      this.sortByLastNameDesc();
+    }
   }
 
   sortByLastNameAsc(): void
