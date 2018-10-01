@@ -27,7 +27,7 @@ export class EmployeesComponent implements OnInit {
     this.getEmployees();
   }
 
-  getEmployees() : void
+  getEmployees(): void
   {
     this.employeeService.getEmployees().subscribe(data => this.employees = data);
   }
@@ -56,7 +56,7 @@ export class EmployeesComponent implements OnInit {
       return 1;
     }
     return 0;
-    }
+    })
   }
 
   sortByIdDesc(): void
@@ -71,7 +71,7 @@ export class EmployeesComponent implements OnInit {
       return -1;
     }
     return 0;
-    }
+    })
   }
 
   sortByName(): void 

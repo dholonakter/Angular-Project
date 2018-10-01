@@ -16,6 +16,7 @@ selectedTask: Task;
 selectedTaskSave: Task;
 IsNewTask: boolean = false;
 SearchValue: string;
+sortSelection;
   
    allTasks = [];
 
@@ -118,6 +119,14 @@ SearchValue: string;
     else{return temp;}      
   }
 
-  
+  sortById(): void
+  {
+
+  }
+
+  sortByName(): void
+  {
+
+  }
 
 }

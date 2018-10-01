@@ -9,6 +9,14 @@
             <input type="text" class="form-control" [(ngModel)]="this.SearchValue" placeholder="Task's Name">
           </div>
         </div>
+        <form>
+          <div>
+              <label><input type="radio" name="asc" value="0" [(ngModel)]="sortSelection"> Ascending</label>
+              <label><input type="radio" name="asc" value="1" [(ngModel)]="sortSelection"/> Descending</label>
+          </div>
+          <button type="button" class="btn btn-dark" (click)="sortById()">Sort by ID</button>
+          <button type="button" class="btn btn-dark" (click)="sortByName()">Sort by Name</button>
+        </form>
         <div class="row">
           <table class="table">
             <thead>

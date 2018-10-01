@@ -14,7 +14,7 @@ export class DepartmentComponent implements OnInit {
   /*here is list of departments*/
   
 departments:Department[]=[];
-
+sortSelection;
 employees:Employee[]=[];
 
 selectedrow:number;
@@ -136,4 +136,89 @@ departmentName(department_id: number): string
     }
   } 
 }
+
+sortById(): void
+{
+  if (this.sortSelection == 0)
+  {
+    this.sortByIdAsc();
+  }
+  else
+  {
+    this.sortByIdDesc();
+  }
+}
+
+sortByIdAsc(): void
+{
+  this.departments.sort((x: Department, y: Department) => {
+    if (x.id < y.id)
+    {
+      return -1;
+    }
+    if (x.id > y.id)
+    {
+      return 1;
+    }
+    return 0;
+  })
+}
+
+sortByIdDesc(): void
+{
+  this.departments.sort((x: Department, y: Department) => {
+    if (x.id < y.id)
+    {
+      return 1;
+    }
+    if (x.id > y.id)
+    {
+      return -1;
+    }
+    return 0;
+  })
+}
+
+sortByName()
+{
+  if (this.sortSelection == 0)
+  {
+    this.sortByNameAsc();
+  }
+  else
+  {
+    this.sortByNameDesc();
+  }
+}
+
+sortByNameAsc(): void
+{
+  this.departments.sort((x: Department, y: Department) => {
+    if (x.name < y.name)
+    {
+      return -1;
+    }
+    if (x.name > y.name)
+    {
+      return 1;
+    }
+     return 0;
+  })
+}
+
+sortByNameDesc(): void
+{
+  this.departments.sort((x: Department, y: Department) => {
+    if (x.name < y.name)
+    {
+      return 1;
+    }
+    if (x.name > y.name)
+    {
+      return -1;
+    }
+     return 0;
+  })
+}
+
 }
