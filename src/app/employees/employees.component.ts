@@ -11,8 +11,6 @@ import { EmployeeService } from '../employee.service';
 export class EmployeesComponent implements OnInit {
 
   isCollapsed = true;
-
-  employees = [];
   sortSelection;
 
   selectedEmployee: Employee;
@@ -24,13 +22,14 @@ export class EmployeesComponent implements OnInit {
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.getEmployees();
+    //this.getEmployees();
+    this.employeeService.createAllEmployees();
   }
 
-  getEmployees(): void
+  /*getEmployees() : void
   {
     this.employeeService.getEmployees().subscribe(data => this.employees = data);
-  }
+  }*/
 
   sortById(): void
   {
@@ -46,7 +45,7 @@ export class EmployeesComponent implements OnInit {
 
   sortByIdAsc(): void
   {
-    this.employees.sort((x: Employee, y: Employee) => {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
     if (x.id < y.id)
     {
       return -1;
@@ -61,7 +60,7 @@ export class EmployeesComponent implements OnInit {
 
   sortByIdDesc(): void
   {
-    this.employees.sort((x: Employee, y: Employee) => {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
     if (x.id < y.id)
     {
       return 1;
@@ -88,7 +87,7 @@ export class EmployeesComponent implements OnInit {
 
   sortByLastNameAsc(): void
   {
-    this.employees.sort((x: Employee, y: Employee) => {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
       if (x.last_name < y.last_name)
       {
         return -1;
@@ -114,7 +113,7 @@ export class EmployeesComponent implements OnInit {
 
   sortByLastNameDesc(): void
   {
-    this.employees.sort((x: Employee, y: Employee) => {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
       if (x.last_name < y.last_name)
       {
         return 1;
@@ -153,27 +152,29 @@ export class EmployeesComponent implements OnInit {
     this.copyOfSelected = new Employee(employee.id, employee.department_id, employee.first_name, employee.last_name, employee.birth_date);
 
     // As well as keep track of the array index again.
-    this.selectedEmployeeArrayIndex = this.employees.indexOf(this.selectedEmployee);
+    this.selectedEmployeeArrayIndex = this.employeeService.allEmployees.indexOf(this.selectedEmployee);
   }
 
   deleteSelectedEmployee(employee: Employee)
   {
-    let currentIndex = this.employees.indexOf(this.selectedEmployee);
+    let currentIndex = this.employeeService.allEmployees.indexOf(this.selectedEmployee);
 
-    // Remove the selected employee from the list.
-    this.employees.splice(currentIndex, 1);
+    /*// Remove the selected employee from the list.
+    this.employeeService.allEmployees.splice(currentIndex, 1); */
+    
+    this.employeeService.remove(this.selectedEmployee);
     
     // Change selection to being one employee earlier in the array or null if none remains. 
-    if (this.employees.length > 0)
+    if (this.employeeService.allEmployees.length > 0)
     {
       if (currentIndex - 1 < 0)
       {
-        this.selectedEmployee = this.employees[currentIndex];
+        this.selectedEmployee = this.employeeService.allEmployees[currentIndex];
         this.copyOfSelected = new Employee(this.selectedEmployee.id, this.selectedEmployee.department_id, this.selectedEmployee.first_name, this.selectedEmployee.last_name, this.selectedEmployee.birth_date);
       }
       else
       {
-        this.selectedEmployee = this.employees[currentIndex - 1];
+        this.selectedEmployee = this.employeeService.allEmployees[currentIndex - 1];
         this.copyOfSelected = new Employee(this.selectedEmployee.id, this.selectedEmployee.department_id, this.selectedEmployee.first_name, this.selectedEmployee.last_name, this.selectedEmployee.birth_date);
       }
     }
@@ -187,7 +188,7 @@ export class EmployeesComponent implements OnInit {
   createEmployee()
   {
     let emp: Employee = new Employee( 0, 0, "First Name", "Last Name", null);
-    this.employees.push(emp);
+    this.employeeService.add(emp);
 
     this.selectedEmployee = emp;
     this.copyOfSelected = new Employee(emp.id, emp.department_id, emp.first_name, emp.last_name, emp.birth_date);
@@ -206,7 +207,7 @@ export class EmployeesComponent implements OnInit {
   cancelChanges()
   {
     // Revert changes.
-    this.employees[this.selectedEmployeeArrayIndex] = this.copyOfSelected;
+    this.employeeService.allEmployees[this.selectedEmployeeArrayIndex] = this.copyOfSelected;
   }
 
   hasBeenChanged(emp1: Employee, emp2: Employee): Boolean

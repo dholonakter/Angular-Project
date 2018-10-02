@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let employee of employees | employeeFilter: term"
+          <tr *ngFor="let employee of employeeService.allEmployees | employeeFilter: term"
           [class.selected]="employee === selectedEmployee"
               (click)="onSelect(employee)">
             <td>{{ employee.id }}</td>

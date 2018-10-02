@@ -26,7 +26,7 @@
                 <th>Date</th>
               </tr>
             </thead>
-            <tr *ngFor="let task1 of allTasks | tasksFilter: this.SearchValue" (click)="onSelect(task1)" [class.selected]="task1 === selectedTask">
+            <tr *ngFor="let task1 of taskService.allTasks | tasksFilter: this.SearchValue" (click)="onSelect(task1)" [class.selected]="task1 === selectedTask">
               <td class="task-row">{{task1.id}}</td>
               <td class="task-row">{{task1.name}}</td>
               <td class="task-row">{{task1.due_date}}</td>
