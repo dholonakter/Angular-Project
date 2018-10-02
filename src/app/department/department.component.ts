@@ -159,7 +159,7 @@ sortById(): void
 
 sortByIdAsc(): void
 {
-  this.departments.sort((x: Department, y: Department) => {
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
     if (x.id < y.id)
     {
       return -1;
@@ -174,7 +174,7 @@ sortByIdAsc(): void
 
 sortByIdDesc(): void
 {
-  this.departments.sort((x: Department, y: Department) => {
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
     if (x.id < y.id)
     {
       return 1;
@@ -201,7 +201,7 @@ sortByName()
 
 sortByNameAsc(): void
 {
-  this.departments.sort((x: Department, y: Department) => {
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
     if (x.name < y.name)
     {
       return -1;
@@ -216,7 +216,7 @@ sortByNameAsc(): void
 
 sortByNameDesc(): void
 {
-  this.departments.sort((x: Department, y: Department) => {
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
     if (x.name < y.name)
     {
       return 1;
