@@ -142,7 +142,7 @@ departmentName(department_id: number): string
     {
       return department.name;
     }
-  } 
+  }
 }
 
 sortById(): void

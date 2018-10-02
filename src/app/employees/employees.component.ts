@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee, IEmployee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { DepartmentComponent } from '../department/department.component';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css'],
+  providers: [DepartmentComponent]
 })
 
 export class EmployeesComponent implements OnInit {
@@ -19,7 +21,7 @@ export class EmployeesComponent implements OnInit {
   // Keep track of the array index of the selected employee.
   selectedEmployeeArrayIndex: number;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService, private dept: DepartmentComponent) { }
 
   ngOnInit() {
     //this.getEmployees();
@@ -212,7 +214,15 @@ export class EmployeesComponent implements OnInit {
     this.copyOfSelected.birth_date = this.selectedEmployee.birth_date;
     this.copyOfSelected.first_name = this.selectedEmployee.first_name;
     this.copyOfSelected.last_name = this.selectedEmployee.last_name;
-    this.copyOfSelected.department_id = this.selectedEmployee.department_id;
+
+    if (this.dept.departmentName(this.selectedEmployee.department_id) !== undefined || this.selectedEmployee.department_id == 0)
+    {
+      this.copyOfSelected.department_id = this.selectedEmployee.department_id;
+    }
+    else
+    {
+      alert("Please enter an existing department id for the selected employee");
+    }
   }
 
   cancelChanges()

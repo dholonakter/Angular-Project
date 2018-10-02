@@ -40,6 +40,7 @@ sortSelection = "0";
     this.selectedTask = task;
     this.selectedTaskSave = new Task(task.id, task.department_id, task.name, task.employees, task.due_date);
   }
+
   newTaskClick(): void{   
     if(this.selectedTask != undefined){this.saveClick();} 
     let temp: Task = new Task(this.getHighestID()+1, 0, "", [0], null);
