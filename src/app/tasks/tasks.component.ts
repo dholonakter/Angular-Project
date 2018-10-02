@@ -111,12 +111,85 @@ sortSelection;
 
   sortById(): void
   {
-
+    if (this.sortSelection == 0)
+    {
+      this.sortByIdAsc();
+    }
+    else
+    {
+      this.sortByIdDesc();
+    }
   }
-
-  sortByName(): void
+  
+  sortByIdAsc(): void
   {
-
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.id < y.id)
+      {
+        return -1;
+      }
+      if (x.id > y.id)
+      {
+        return 1;
+      }
+      return 0;
+    })
+  }
+  
+  sortByIdDesc(): void
+  {
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.id < y.id)
+      {
+        return 1;
+      }
+      if (x.id > y.id)
+      {
+        return -1;
+      }
+      return 0;
+    })
   }
 
+  sortByName()
+  {
+    if (this.sortSelection == 0)
+    {
+      this.sortByNameAsc();
+    }
+    else
+    {
+      this.sortByNameDesc();
+    }
+  }
+
+  sortByNameAsc(): void
+  {
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.name < y.name)
+      {
+        return -1;
+      }
+      if (x.name > y.name)
+      {
+        return 1;
+      }
+       return 0;
+    })
+  }
+  
+  sortByNameDesc(): void
+  {
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.name < y.name)
+      {
+        return 1;
+      }
+      if (x.name > y.name)
+      {
+        return -1;
+      }
+       return 0;
+    })
+  }
 }
