@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../model/task';
 import { TasksService } from '../tasks.service';
 import { TasksFilterPipe } from '../tasks-filter.pipe';
+import { EmployeeService } from '../employee.service';
 
 
 @Component({
@@ -19,12 +20,13 @@ SearchValue: string;
   
    //allTasks = [];
 
-  constructor(private taskService: TasksService) {
+  constructor(private taskService: TasksService, private employeeService: EmployeeService) {
     
    }
 
   ngOnInit() {
     this.taskService.createAllTask();
+    this.employeeService.createAllEmployees();
   }
  
   /*getAllTasks(): void{
@@ -106,6 +108,16 @@ SearchValue: string;
       return temp;
     }
     else{return temp;}      
+  }
+  public getEmployeeNames(task: Task) : string{
+    let names: string = "";
+    this.employeeService.allEmployees.forEach(employee => {
+      task.employees.forEach(num => {
+        if(employee.id == num){names += employee.first_name + " " + employee.last_name+", ";}
+      })     
+    });
+    if (names == ""){names = "No Employees";}
+    return names;
   }
 
   

@@ -3,6 +3,6 @@
   <b>ID: </b> {{ this.theTask.id }} <br>
   <b>Name: </b> {{ this.theTask.name }} <br>
   <b>Department-ID: </b> {{ this.theTask.department_id }} <br>
-  <b>Employees-ID: </b> {{ this.theTask.employees }} <br>
+  <b>Employees-Names: </b> {{ getEmployeeNames(this.theTask) }} <br>
   <b>Date: </b> {{ this.theTask.due_date }}
 </p>

@@ -15,13 +15,8 @@ export class DepartmentService {
   //old Service -----------------------------------
   /*getAllDepartments(): Observable<Department[]>
   {
-<<<<<<< HEAD
     return this.http.get<Department[]>(this.url);
   }*/
-=======
-    return this.http.get<Department[]>(this.url);//fetch data from server using http
-  }
->>>>>>> 3bdb1783c680deb035bb25c1e06252d1d35a3e6c
 
   constructor(private http: HttpClient) { }
 

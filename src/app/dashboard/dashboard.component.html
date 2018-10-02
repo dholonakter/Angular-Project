@@ -44,7 +44,7 @@
                     <b>ID:</b> {{ task1.id }}<br> 
                     <b>Department ID:</b> {{task1.department_id}}<br> 
                     <b>Name:</b> {{task1.name}}<br> 
-                    <b>Employees:</b> {{task1.employees}}<br> 
+                    <b>Employees:</b> {{ tas.getEmployeeNames(task1) }}<br> 
                     <b>Date:</b> {{task1.due_date}}<br>
                   </ng-template>
                 </ngb-panel>
@@ -68,7 +68,7 @@
                       <ng-template ngbPanelContent>
                           <b>ID:</b> {{ employee.id }}<br> 
                           <b>Name:</b> {{ employee.first_name }} {{ employee.last_name }}<br> 
-                          <b>Date of birth:</b> {{ employee .birth_date }}<br> 
+                          <b>Date of birth:</b> {{ employee.birth_date }}<br> 
                           <b>Works at department:</b> {{ dept.departmentName(employee.department_id) }}<br> 
                      
                       </ng-template>
