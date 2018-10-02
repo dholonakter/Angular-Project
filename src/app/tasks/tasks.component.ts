@@ -5,6 +5,7 @@ import { TasksFilterPipe } from '../tasks-filter.pipe';
 import { EmployeeService } from '../employee.service';
 
 
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -121,6 +122,8 @@ sortSelection = "0";
     if (names == ""){names = "No Employees";}
     return names;
   }
+  
+
 
   sortById(): void
   {
