@@ -136,6 +136,7 @@ onCancel() {
 
 departmentName(department_id: number): string
 {
+  if (department_id == 0) return "No department";
   for (let department of this.departmentService.allDepartments)
   {
     if (department_id == department.id)
