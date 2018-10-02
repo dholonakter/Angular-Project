@@ -5,6 +5,14 @@
     </div>
     <div style="margin-left: 20px;">
       <input id="employeeSearchBar" class="form-control" type="text" [(ngModel)]="term" placeholder="Search Employee..."/>
+      <form>
+        <div>
+            <label><input type="radio" name="asc" value="0" checked [(ngModel)]="sortSelection"/> Ascending</label>
+            <label><input type="radio" name="asc" value="1" [(ngModel)]="sortSelection"/> Descending</label>
+        </div>
+        <button type="button" class="btn btn-dark" (click)="sortById()">Sort by ID</button>
+        <button type="button" class="btn btn-dark" (click)="sortByName()">Sort by Name</button>
+      </form>
       <table class="table">
         <thead>
           <tr>

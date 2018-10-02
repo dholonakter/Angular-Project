@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee';
+import { Employee, IEmployee } from '../employee';
 import { EmployeeService } from '../employee.service';
+import { DepartmentComponent } from '../department/department.component';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
   styleUrls: ['./employees.component.css'],
+  providers: [DepartmentComponent]
 })
 
 export class EmployeesComponent implements OnInit {
 
   isCollapsed = true;
-
-  //employees = [];
+  sortSelection = "0";
 
   selectedEmployee: Employee;
   copyOfSelected: Employee;
@@ -20,7 +21,7 @@ export class EmployeesComponent implements OnInit {
   // Keep track of the array index of the selected employee.
   selectedEmployeeArrayIndex: number;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService, private dept: DepartmentComponent) { }
 
   ngOnInit() {
     //this.getEmployees();
@@ -31,6 +32,112 @@ export class EmployeesComponent implements OnInit {
   {
     this.employeeService.getEmployees().subscribe(data => this.employees = data);
   }*/
+
+  sortById(): void
+  {
+    if (this.sortSelection == "0")
+    {
+      this.sortByIdAsc();
+    }
+    else
+    {
+      this.sortByIdDesc();
+    }
+  }
+
+  sortByIdAsc(): void
+  {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
+    if (x.id < y.id)
+    {
+      return -1;
+    }
+    if (x.id > y.id)
+    {
+      return 1;
+    }
+    return 0;
+    })
+  }
+
+  sortByIdDesc(): void
+  {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
+    if (x.id < y.id)
+    {
+      return 1;
+    }
+    if (x.id > y.id)
+    {
+      return -1;
+    }
+    return 0;
+    })
+  }
+
+  sortByName(): void 
+  {
+    if (this.sortSelection == "0")
+    {
+      this.sortByLastNameAsc();
+    }
+    else
+    {
+      this.sortByLastNameDesc();
+    }
+  }
+
+  sortByLastNameAsc(): void
+  {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
+      if (x.last_name < y.last_name)
+      {
+        return -1;
+      }
+      if (x.last_name > y.last_name)
+      {
+        return 1;
+      }
+      else
+      {
+       if (x.first_name < y.first_name)
+       {
+         return -1;
+       }
+       if(x.first_name > y.first_name)
+       {
+         return 1;
+       }
+       return 0;
+      }
+    })
+  }
+
+  sortByLastNameDesc(): void
+  {
+    this.employeeService.allEmployees.sort((x: Employee, y: Employee) => {
+      if (x.last_name < y.last_name)
+      {
+        return 1;
+      }
+      if (x.last_name > y.last_name)
+      {
+        return -1;
+      }
+      else
+      {
+       if (x.first_name < y.first_name)
+       {
+         return 1;
+       }
+       if(x.first_name > y.first_name)
+       {
+         return -1;
+       }
+       return 0;
+      }
+    })
+  }
 
   onSelect(employee: Employee)
   {
@@ -82,11 +189,22 @@ export class EmployeesComponent implements OnInit {
 
   createEmployee()
   {
-    let emp: Employee = new Employee( 0, 0, "First Name", "Last Name", null);
+    let newId = this.getMaxId() + 1;
+
+    let emp: Employee = new Employee( newId, 0, "First Name", "Last Name", null);
     this.employeeService.add(emp);
 
     this.selectedEmployee = emp;
     this.copyOfSelected = new Employee(emp.id, emp.department_id, emp.first_name, emp.last_name, emp.birth_date);
+  }
+
+  getMaxId(): number
+  {
+    let max = 0;
+    this.employeeService.allEmployees.forEach(emp => {
+      if(emp.id > max){max = emp.id;}
+    });
+    return max;
   }
 
   changeEmployeeDetails()
@@ -96,7 +214,15 @@ export class EmployeesComponent implements OnInit {
     this.copyOfSelected.birth_date = this.selectedEmployee.birth_date;
     this.copyOfSelected.first_name = this.selectedEmployee.first_name;
     this.copyOfSelected.last_name = this.selectedEmployee.last_name;
-    this.copyOfSelected.department_id = this.selectedEmployee.department_id;
+
+    if (this.dept.departmentName(this.selectedEmployee.department_id) !== undefined || this.selectedEmployee.department_id == 0)
+    {
+      this.copyOfSelected.department_id = this.selectedEmployee.department_id;
+    }
+    else
+    {
+      alert("Please enter an existing department id for the selected employee");
+    }
   }
 
   cancelChanges()
