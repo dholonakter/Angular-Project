@@ -11,7 +11,7 @@ import { EmployeeService } from '../employee.service';
 export class EmployeesComponent implements OnInit {
 
   isCollapsed = true;
-  sortSelection;
+  sortSelection = "0";
 
   selectedEmployee: Employee;
   copyOfSelected: Employee;
@@ -33,7 +33,7 @@ export class EmployeesComponent implements OnInit {
 
   sortById(): void
   {
-    if (this.sortSelection == 0)
+    if (this.sortSelection == "0")
     {
       this.sortByIdAsc();
     }
@@ -75,7 +75,7 @@ export class EmployeesComponent implements OnInit {
 
   sortByName(): void 
   {
-    if (this.sortSelection == 0)
+    if (this.sortSelection == "0")
     {
       this.sortByLastNameAsc();
     }

@@ -14,7 +14,7 @@ export class DepartmentComponent implements OnInit {
   /*here is list of departments*/
   
 //departments:Department[]=[];
-sortSelection;
+sortSelection = "0";
 //employees:Employee[]=[];
 
 selectedrow:number;
@@ -147,7 +147,7 @@ departmentName(department_id: number): string
 
 sortById(): void
 {
-  if (this.sortSelection == 0)
+  if (this.sortSelection == "0")
   {
     this.sortByIdAsc();
   }
@@ -189,7 +189,7 @@ sortByIdDesc(): void
 
 sortByName()
 {
-  if (this.sortSelection == 0)
+  if (this.sortSelection == "0")
   {
     this.sortByNameAsc();
   }

@@ -16,7 +16,7 @@ selectedTask: Task;
 selectedTaskSave: Task;
 IsNewTask: boolean = false;
 SearchValue: string;
-sortSelection;
+sortSelection = "0";
   
    //allTasks = [];
 
@@ -111,7 +111,7 @@ sortSelection;
 
   sortById(): void
   {
-    if (this.sortSelection == 0)
+    if (this.sortSelection == "0")
     {
       this.sortByIdAsc();
     }
@@ -153,7 +153,7 @@ sortSelection;
 
   sortByName()
   {
-    if (this.sortSelection == 0)
+    if (this.sortSelection == "0")
     {
       this.sortByNameAsc();
     }
