@@ -187,11 +187,22 @@ export class EmployeesComponent implements OnInit {
 
   createEmployee()
   {
-    let emp: Employee = new Employee( 0, 0, "First Name", "Last Name", null);
+    let newId = this.getMaxId() + 1;
+
+    let emp: Employee = new Employee( newId, 0, "First Name", "Last Name", null);
     this.employeeService.add(emp);
 
     this.selectedEmployee = emp;
     this.copyOfSelected = new Employee(emp.id, emp.department_id, emp.first_name, emp.last_name, emp.birth_date);
+  }
+
+  getMaxId(): number
+  {
+    let max = 0;
+    this.employeeService.allEmployees.forEach(emp => {
+      if(emp.id > max){max = emp.id;}
+    });
+    return max;
   }
 
   changeEmployeeDetails()
