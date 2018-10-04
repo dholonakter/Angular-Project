@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../model/task';
 import { TasksService } from '../tasks.service';
 import { TasksFilterPipe } from '../tasks-filter.pipe';
+import { EmployeeService } from '../employee.service';
+
 
 
 @Component({
@@ -16,15 +18,17 @@ selectedTask: Task;
 selectedTaskSave: Task;
 IsNewTask: boolean = false;
 SearchValue: string;
+sortSelection = "0";
   
    //allTasks = [];
 
-  constructor(private taskService: TasksService) {
+  constructor(private taskService: TasksService, private employeeService: EmployeeService) {
     
    }
 
   ngOnInit() {
     this.taskService.createAllTask();
+    this.employeeService.createAllEmployees();
   }
  
   /*getAllTasks(): void{
@@ -39,6 +43,7 @@ SearchValue: string;
     this.selectedTask = task;
     this.selectedTaskSave = new Task(task.id, task.department_id, task.name, task.employees, task.due_date);
   }
+
   newTaskClick(): void{   
     if(this.selectedTask != undefined){this.saveClick();} 
     let temp: Task = new Task(this.getHighestID()+1, 0, "", [0], null);
@@ -107,7 +112,100 @@ SearchValue: string;
     }
     else{return temp;}      
   }
-
+  public getEmployeeNames(task: Task) : string{
+    let names: string = "";
+    this.employeeService.allEmployees.forEach(employee => {
+      task.employees.forEach(num => {
+        if(employee.id == num){names += employee.first_name + " " + employee.last_name+", ";}
+      })     
+    });
+    if (names == ""){names = "No Employees";}
+    return names;
+  }
   
 
+
+  sortById(): void
+  {
+    if (this.sortSelection == "0")
+    {
+      this.sortByIdAsc();
+    }
+    else
+    {
+      this.sortByIdDesc();
+    }
+  }
+  
+  sortByIdAsc(): void
+  {
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.id < y.id)
+      {
+        return -1;
+      }
+      if (x.id > y.id)
+      {
+        return 1;
+      }
+      return 0;
+    })
+  }
+  
+  sortByIdDesc(): void
+  {
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.id < y.id)
+      {
+        return 1;
+      }
+      if (x.id > y.id)
+      {
+        return -1;
+      }
+      return 0;
+    })
+  }
+
+  sortByName()
+  {
+    if (this.sortSelection == "0")
+    {
+      this.sortByNameAsc();
+    }
+    else
+    {
+      this.sortByNameDesc();
+    }
+  }
+
+  sortByNameAsc(): void
+  {
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.name < y.name)
+      {
+        return -1;
+      }
+      if (x.name > y.name)
+      {
+        return 1;
+      }
+       return 0;
+    })
+  }
+  
+  sortByNameDesc(): void
+  {
+    this.taskService.allTasks.sort((x: Task, y: Task) => {
+      if (x.name < y.name)
+      {
+        return 1;
+      }
+      if (x.name > y.name)
+      {
+        return -1;
+      }
+       return 0;
+    })
+  }
 }

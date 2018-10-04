@@ -6,12 +6,13 @@ import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { DepartmentComponent } from '../department/department.component';
 import { Department } from '../model/department';
+import { TasksComponent } from '../tasks/tasks.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers: [DepartmentComponent]
+  providers: [DepartmentComponent, TasksComponent]
 })
 export class DashboardComponent implements OnInit {
 
@@ -30,7 +31,7 @@ export class DashboardComponent implements OnInit {
   //departments:Department[];
 
   public all
-  constructor(private taskService: TasksService, private employeeService: EmployeeService,private departmentService:DepartmentService, private dept: DepartmentComponent) { }
+  constructor(private taskService: TasksService, private employeeService: EmployeeService,private departmentService:DepartmentService, private dept: DepartmentComponent, private tas: TasksComponent) { }
 
   ngOnInit() {
     this.onSelectMenu("Dashboard");
@@ -189,6 +190,16 @@ export class DashboardComponent implements OnInit {
     }
     return this.SelectedDepartmentTasks;
     
+  }
+  getEmployeeNames(task: Task): string{
+    let names: string = "";
+    this.employeeService.allEmployees.forEach(employee => {
+      task.employees.forEach(num => {
+        if(employee.id == num){names += employee.first_name + " " + employee.last_name+", ";}
+      })     
+    });
+    if (names == ""){names = "No Employees";}
+    return names;
   }
 
   /*getAllDepartments():void{

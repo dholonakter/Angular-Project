@@ -14,6 +14,7 @@ export class DepartmentComponent implements OnInit {
   /*here is list of departments*/
   
 departments:IDepartment[]=[];
+sortSelection = "0";
 
 //employees:Employee[]=[];
 
@@ -85,8 +86,11 @@ addNewDepartment(name1: HTMLInputElement,building1:HTMLInputElement)
         const index=this.departmentService.allDepartments.indexOf(this.selectedDepartment,0);
         if(index>-1){
           let depNumber:number=this.selectedDepartment.id;
+
           this.departmentService.remove(this.selectedDepartment);
           //adding updated one
+
+
           let temp:Department=new Department(depNumber, name1.value, building1.value);
           this.departmentService.add(temp);
           this.selectedDepartment=null;
@@ -109,7 +113,8 @@ this.selectedDepBuilding=this.selectedDepartment.building;
 }
 //
 onDelete(index: number) {
-  
+  // Delete the corresponding department entry from the list.
+  //this.departmentService.allDepartments.splice(index, 1);
   this.departmentService.remove(this.selectedDepartment);
 } 
 onCancel() {
@@ -119,12 +124,98 @@ onCancel() {
 
 departmentName(department_id: number): string
 {
+  if (department_id == 0) return "No department";
+
   for (let department of this.departmentService.allDepartments)
   {
     if (department_id == department.id)
     {
       return department.name;
-    }
+    } 
   } 
+}
+
+sortById(): void
+{
+  if (this.sortSelection == "0")
+  {
+    this.sortByIdAsc();
+  }
+  else
+  {
+    this.sortByIdDesc();
+  }
+}
+
+sortByIdAsc(): void
+{
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
+    if (x.id < y.id)
+    {
+      return -1;
+    }
+    if (x.id > y.id)
+    {
+      return 1;
+    }
+    return 0;
+  })
+}
+
+sortByIdDesc(): void
+{
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
+    if (x.id < y.id)
+    {
+      return 1;
+    }
+    if (x.id > y.id)
+    {
+      return -1;
+    }
+    return 0;
+  })
+}
+
+sortByName()
+{
+  if (this.sortSelection == "0")
+  {
+    this.sortByNameAsc();
+  }
+  else
+  {
+    this.sortByNameDesc();
+  }
+}
+
+sortByNameAsc(): void
+{
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
+    if (x.name < y.name)
+    {
+      return -1;
+    }
+    if (x.name > y.name)
+    {
+      return 1;
+    }
+     return 0;
+  })
+}
+
+sortByNameDesc(): void
+{
+  this.departmentService.allDepartments.sort((x: Department, y: Department) => {
+    if (x.name < y.name)
+    {
+      return 1;
+    }
+    if (x.name > y.name)
+    {
+      return -1;
+    }
+     return 0;
+  })
 }
 }

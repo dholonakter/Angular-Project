@@ -9,6 +9,14 @@
             <input type="text" class="form-control" [(ngModel)]="this.SearchValue" placeholder="Task's Name">
           </div>
         </div>
+        <form>
+          <div>
+              <label><input type="radio" name="asc" value="0" [(ngModel)]="sortSelection"> Ascending</label>
+              <label><input type="radio" name="asc" value="1" [(ngModel)]="sortSelection"/> Descending</label>
+          </div>
+          <button type="button" class="btn btn-dark" (click)="sortById()">Sort by ID</button>
+          <button type="button" class="btn btn-dark" (click)="sortByName()">Sort by Name</button>
+        </form>
         <div class="row">
           <table class="table">
             <thead>
@@ -35,7 +43,7 @@
                       <input type="number" [(ngModel)]="this.selectedTask.department_id" placeholder="Department ID"><br>
                       <label>Name: </label>
                       <input type="text" [(ngModel)]="this.selectedTask.name" placeholder="Name"><br>
-                      <label>Employees: </label>
+                      <label>Employees ID: </label>
                       <input type="text"[(ngModel)]="this.selectedTask.employees" placeholder="Employees"><br>
                       <label>Date: </label>
                       <input type="date"[(ngModel)]="this.selectedTask.due_date" placeholder="Date">
@@ -46,6 +54,7 @@
                       <button class="btn-info" *ngIf="selectedTask" (click)="cancelClick()">Cancel</button>
                       <button class="btn-info" *ngIf="selectedTask" (click)="deleteClick()">Delete</button>
                     </div>
+                    
                   </div>
             </div>
             <div class="col-sm-6">
